@@ -111,8 +111,21 @@ angular.module('viet-map')
 
                     // Initiate events listeners.
                     scope.initiateMarkerEventListeners(scope.marker);
+
+                    // Raise marker initialization event.
+                    scope.$broadcast('marker-is-ready', scope.marker);
                 });
 
+
+                // This function is for destroying marker.
+                scope.destroy = function(){
+
+                    // Marker is invalid.
+                    if (scope.marker == null)
+                        return;
+
+                    scope.marker.setMap(null);
+                };
 
                 // Initiate marker event listeners.
                 scope.initiateMarkerEventListeners = function (marker) {

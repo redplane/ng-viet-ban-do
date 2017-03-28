@@ -110,6 +110,9 @@ angular.module('viet-map')
 
                     // Initiate events listeners.
                     scope.initiateMarkerEventListeners(scope.customMarker);
+
+                    // Broadcast the event to children.
+                    scope.$broadcast('custom-marker-is-ready', scope.customMarker);
                 });
 
 
