@@ -34,7 +34,7 @@ angular.module('viet-map')
                 mouseDown: '&',
                 mouseUp: '&'
             },
-            link: function (scope, element, attrs, mapController) {
+            link: function (scope, element, attrs, controller) {
 
                 // Watch opacity for changes.
                 scope.$watch('opacity', function (value) {
@@ -113,7 +113,7 @@ angular.module('viet-map')
                     scope.initiateMarkerEventListeners(scope.marker);
 
                     // Raise marker initialization event.
-                    scope.$broadcast('marker-is-ready', scope.marker);
+                    scope.$broadcast('marker-is-ready', {marker: scope.marker});
                 });
 
 
@@ -196,7 +196,8 @@ angular.module('viet-map')
                 }
             },
             controller: ['$scope', function ($scope) {
-
+                this.marker = new vietbando.Marker(new vietbando.LatLng(0, 0));
+                $scope.marker = this.marker;
             }]
         };
     });
