@@ -102,9 +102,13 @@ angular.module('viet-map')
                         position = scope.position;
 
                     // Set marker default position.
-                    scope.marker = new vietbando.Marker({
-                        position: position
-                    });
+                    if (scope.marker == null) {
+                        scope.marker = new vietbando.Marker({
+                            position: position
+                        });
+                    } else {
+                        scope.marker.setPosition(position);
+                    }
 
                     // Attach marker to the map.
                     scope.marker.setMap(args.map);
@@ -193,10 +197,15 @@ angular.module('viet-map')
                         // Raise event on scope.
                         scope.mouseUp({parameter: parameter});
                     });
-                }
+                };
             },
             controller: ['$scope', function ($scope) {
 
+                this.marker = new vietbando.Marker({
+                    position: new vietbando.LatLng(0, 0)
+                });
+
+                $scope.marker = this.marker;
             }]
         };
     });
