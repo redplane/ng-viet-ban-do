@@ -1,12 +1,12 @@
 'use strict';
 
-angular.module('viet-map')
+angular.module('ng-viet-ban-do')
     .directive('infoWindow', function () {
         return {
             restrict: 'E',
             template: '<div ng-transclude></div>',
             transclude: true,
-            require: ['^vietMap', '?^marker'],
+            require: ['^ngVietMap', '?^marker'],
             scope: {
                 content: '@',
                 autoPan: '=',
@@ -24,8 +24,9 @@ angular.module('viet-map')
                 // Watch content for its changes.
                 scope.$watch('content', function (value) {
                     // Info window is invalid.
-                    if (scope.infoWindow == null)
+                    if (scope.infoWindow === null) {
                         return;
+                    }
 
                     scope.infoWindow.setContent(value);
                 });
@@ -33,8 +34,9 @@ angular.module('viet-map')
                 // Watch position for its change.
                 scope.$watch('position', function (value) {
                     // Info window is invalid.
-                    if (scope.infoWindow == null)
+                    if (scope.infoWindow === null) {
                         return;
+                    }
 
                     scope.infoWindow.setPosition(value);
                 });
@@ -42,8 +44,9 @@ angular.module('viet-map')
                 // Watch zIndex for its change.
                 scope.$watch('zIndex', function (value) {
                     // Info window is invalid.
-                    if (scope.infoWindow == null)
+                    if (scope.infoWindow === null) {
                         return;
+                    }
 
                     scope.infoWindow.setZIndex(value);
                 });
@@ -76,11 +79,12 @@ angular.module('viet-map')
 
                 // Open info window.
                 scope.openInfoWindow = function () {
-                    if (scope.parentMap == null || !(scope.parentMap instanceof vietbando.Map))
+                    if (scope.parentMap === null || !(scope.parentMap instanceof vietbando.Map)) {
                         return;
+                    }
 
                     scope.infoWindow.open(scope.parentMap, scope.parentMarker);
-                }
+                };
             },
             controller: function ($scope, $element) {
                 $scope.infoWindow = new vietbando.InfoWindow();

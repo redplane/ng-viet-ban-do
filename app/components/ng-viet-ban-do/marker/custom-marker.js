@@ -1,12 +1,12 @@
 'use strict';
 
-angular.module('viet-map')
-    .directive('marker', function () {
+angular.module('ng-viet-ban-do')
+    .directive('customMarker', function () {
         return {
             restrict: 'E',
             template: '<div ng-transclude></div>',
             transclude: true,
-            require: '^vietMap',
+            require: '^ngVietMap',
             scope: {
                 anchorPoint: '=?',
                 crossOnDrag: '=',
@@ -34,66 +34,65 @@ angular.module('viet-map')
                 mouseDown: '&',
                 mouseUp: '&'
             },
-            link: function (scope, element, attrs, controller) {
+            link: function (scope, element, attrs, mapController) {
 
                 // Watch opacity for changes.
                 scope.$watch('opacity', function (value) {
-                    if (scope.marker == null)
+                    if (scope.customMarker == null)
                         return;
 
-                    scope.marker.setOpacity(value);
+                    scope.customMarker.setOpacity(value);
                 });
 
                 // Watch cursor for changes.
                 scope.$watch('cursor', function (value) {
-                    if (scope.marker == null)
+                    if (scope.customMarker == null)
                         return;
 
                     if (value == null)
                         return;
 
-                    scope.marker.setCursor(value);
+                    scope.customMarker.setCursor(value);
                 });
 
                 // Watch title for changes.
                 scope.$watch('title', function (value) {
-                    if (scope.marker == null)
+                    if (scope.customMarker == null)
                         return;
 
-                    scope.marker.setTitle(value);
+                    scope.customMarker.setTitle(value);
                 });
 
                 // Watch position for changes.
                 scope.$watch('position', function (value) {
-                    if (scope.marker == null)
+                    if (scope.customMarker == null)
                         return;
 
-                    scope.marker.setPosition(value);
-                    scope.$applyAsync();
+                    scope.customMarker.setPosition(value);
                 });
 
                 // Watch draggable for changes.
                 scope.$watch('draggable', function (value) {
-                    if (scope.marker == null)
+                    if (scope.customMarker == null)
                         return;
 
-                    scope.marker.setDraggable(value);
+                    scope.customMarker.setDraggable(value);
                 });
 
                 // Watch z-index for changes.
                 scope.$watch('zIndex', function (value) {
-                    if (scope.marker == null)
+                    if (scope.customMarker == null)
                         return;
 
-                    scope.marker.setZIndex(value);
+                    scope.customMarker.setZIndex(value);
                 });
 
                 // Watch draggable for changes.
                 scope.$watch('visible', function (value) {
-                    if (scope.marker == null)
+                    if (scope.customMarker == null)
                         return;
 
-                    scope.marker.setVisible(value);
+                    scope.customMarker.setVisible(value);
                 });
 
                 scope.$on('map-is-ready', function (event, args) {
@@ -102,30 +101,20 @@ angular.module('viet-map')
                         position = scope.position;
 
                     // Set marker default position.
-                    scope.marker = new vietbando.Marker({
+                    scope.customMarker = new vietbando.Marker({
                         position: position
                     });
 
                     // Attach marker to the map.
-                    scope.marker.setMap(args.map);
+                    scope.customMarker.setMap(args.map);
 
                     // Initiate events listeners.
-                    scope.initiateMarkerEventListeners(scope.marker);
+                    scope.initiateMarkerEventListeners(scope.customMarker);
 
-                    // Raise marker initialization event.
-                    scope.$broadcast('marker-is-ready', {marker: scope.marker});
+                    // Broadcast the event to children.
+                    scope.$broadcast('custom-marker-is-ready', {marker: scope.customMarker});
                 });
 
-
-                // This function is for destroying marker.
-                scope.destroy = function(){
-
-                    // Marker is invalid.
-                    if (scope.marker == null)
-                        return;
-
-                    scope.marker.setMap(null);
-                };
 
                 // Initiate marker event listeners.
                 scope.initiateMarkerEventListeners = function (marker) {
@@ -196,8 +185,7 @@ angular.module('viet-map')
                 }
             },
             controller: ['$scope', function ($scope) {
-                this.marker = new vietbando.Marker(new vietbando.LatLng(0, 0));
-                $scope.marker = this.marker;
+
             }]
         };
     });

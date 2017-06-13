@@ -1,10 +1,10 @@
 'use strict';
 
-angular.module('viet-map')
-    .directive('vietMap', function () {
+angular.module('ng-viet-ban-do')
+    .directive('ngVietMap', function () {
         return {
             restrict: 'E',
-            templateUrl: "components/viet-map/map/map.html",
+            templateUrl: "components/ng-viet-ban-do/map/map.html",
             transclude: true,
             scope: {
                 center: '=?',
