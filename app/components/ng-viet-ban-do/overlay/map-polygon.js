@@ -1,20 +1,19 @@
 'use strict';
 
 angular.module('ng-viet-ban-do')
-    .directive('mapPolyline', function () {
+    .directive('mapPolygon', function () {
         return {
             restrict: 'E',
             require: '^ngVietMap',
             scope: {
-                path: '=',
+                paths: '=',
+                fillColor: '=?',
+                fillOpacity: '=?',
+                zIndex: '=?',
+                visible: '=?',
                 strokeColor: '=?',
                 strokeOpacity: '=?',
                 strokeWidth: '=?',
-                visible: '=?',
-                drawArrows: '=?',
-                draggable: '=?',
-                repeatArrow: '=?',
-                widthArrow: '=?',
 
                 // Event listeners
                 click: '&',
@@ -30,28 +29,26 @@ angular.module('ng-viet-ban-do')
 
                 // List of properties which should be listened for changes.
                 var properties = [
-                    {name: 'path', function: 'setPath', default: null},
-                    {name: 'strokeColor', function: 'setStrokeColor', default: null},
-                    {name: 'strokeOpacity', function: 'setStrokeOpacity', default: null},
-                    {name: 'strokeWidth', function: 'setStrokeWidth', default: null},
+                    {name: 'paths', function: 'setPaths', default: null},
+                    {name: 'fillColor', function: 'setFillColor', default: null},
+                    {name: 'fillOpacity', function: 'setFillOpacity', default: null},
+                    {name: 'zIndex', function: 'setZIndex', default: null},
                     {name: 'visible', function: 'setVisible', default: true},
-                    {name: 'drawArrows', function: 'setDrawArrows', default: false},
-                    {name: 'draggable', function: null, default: null},
-                    {name: 'repeatArrow', function: null},
-                    {name: 'widthArrow', function: null}
+                    {name: 'strokeColor', function: 'setStrokeColor', default: 'green'},
+                    {name: 'strokeOpacity', function: 'setStrokeOpacity', default: 1},
+                    {name: 'strokeWidth', function: 'setStrokeWidth', default: 1}
                 ];
 
-                /*
-                * Events list and their alias
-                * */
+                // List of events and their alias in directive.
                 var events = [
                     {name: 'click', alias: 'click'},
                     {name: 'dblclick', alias: 'doubleClick'},
                     {name: 'rightclick', alias: 'rightClick'},
                     {name: 'mouseover', alias: 'mouseOver'},
                     {name: 'mouseout', alias: 'mouseOut'},
+                    {name: 'mousemove', alias: 'mouseMove'},
                     {name: 'mousedown', alias: 'mouseDown'},
-                    {name: 'mouseup', alias: mouseup}
+                    {name: 'mouseup', alias: 'mouseUp'}
                 ];
 
                 /*
@@ -60,14 +57,14 @@ angular.module('ng-viet-ban-do')
                 scope.$on('map-is-ready', function (event, args) {
 
                     // Initiate polyline.
-                    var polylineOptions = new vietbando.PolylineOptions();
+                    var polygonOptions = new vietbando.PolygonOptions();
                     for (var index = 0; index < properties.length; index++) {
                         var property = properties[index];
                         if (scope[property.name] != null)
-                            polylineOptions[property.name] = scope[property.name];
+                            polygonOptions[property.name] = scope[property.name];
                         else{
                             if (property.default != null)
-                                polylineOptions[property.name] = property.default;
+                                polygonOptions[property.name] = property.default;
                         }
 
                         if (property.function != null) {
@@ -80,40 +77,40 @@ angular.module('ng-viet-ban-do')
                     }
 
                     // Initiate polyline which will be attached into map.
-                    scope.polyline = new vietbando.Polyline(polylineOptions);
+                    scope.polygon = new vietbando.Polygon(polygonOptions);
 
                     // Initiate polyline.
-                    scope.polyline.setMap(args.map);
+                    scope.polygon.setMap(args.map);
 
-                    // Listen to events list.
-                    for (var iEventId = 0; iEventId < events.length; iEventId++) {
-                        var event = events[iEventId];
-                        var szEventName = event.name;
-                        var szAlias = event.alias;
+                    // Hook all events fires from polygon.
+                    for (var iEventId = 0; iEventId < events.length; iEventId++){
+                        var pEvent = events[iEventId];
+                        var szEventName = pEvent.name;
+                        var szEventAlias = pEvent.alias;
 
-                        scope.hookEvents(scope.polyline, szEventName, szAlias);
+                        scope.hookEvents(scope.polygon, szEventName, szEventAlias);
                     }
                 });
 
                 /*
-                * Listen to property changes.
+                * Listen for directive property changes.
                 * */
                 scope.listenChanges = function (szPropertyName, szFunctionName) {
                     // Find the name of property.
                     scope.$watch(szPropertyName, function (current, past, internalScope) {
-                        if (internalScope.polyline == null)
+                        if (internalScope.polygon == null)
                             return;
-                        scope.polyline[szFunctionName](current);
+                        internalScope.polygon[szFunctionName](current);
                     })
 
                 };
 
                 /*
-                * Listen to events.
+                * Hook event and fires event from scope by using alias.
                 * */
-                scope.hookEvents = function(polyline, szEventName, szAlias){
+                scope.hookEvents = function(polygon, szEventName, szAlias){
                     // Catch drag start event.
-                    vietbando.event.addListener(polyline, szEventName, function (parameter) {
+                    vietbando.event.addListener(polygon, szEventName, function (parameter) {
                         // Raise event on scope.
                         scope[szAlias]({parameter: parameter});
                     });
