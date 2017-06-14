@@ -65,9 +65,52 @@ angular
             visible: true
         };
 
+        /*
+        * Rectangle configuration
+        * */
+        $scope.rectangleOptions = {
+            bounds: new vbd.LatLngBounds(new vietbando.LatLng(10.970516, 106.408081), new vbd.LatLng(12.229635, 108.858032)),
+            draggable: true,
+            fillColor: 'blue',
+            fillOpacity: 1,
+            strokeColor: 'green',
+            strokeWidth: 1,
+            strokeOpacity: 1,
+            visible: true,
+            zIndex: 10
+        };
+
+        /*
+        * Map circle settings.
+        * */
+        $scope.circleOptions = {
+            center: new vietbando.LatLng(20.989329, 105.847778),
+            fillColor: 'blue',
+            fillOpacity: 0.5,
+            strokeOpacity: 1,
+            strokeWidth: 1,
+            strokeColor: 'red',
+            visible: true,
+            radius: 20000
+
+        };
+
+        /*
+        * Info window settings.
+        * */
+        $scope.infoWindowOptions = {
+            position: new vietbando.LatLng(19.474037, 105.529175)
+        };
+
         $scope.mapOptions = {
             mapTypeId: 'TERRAIN',
             zoomControl: false
+        };
+
+        $scope.markerOptions = {
+            position: new vietbando.LatLng(18.809793, 105.342407),
+            anchorPoint: new vietbando.Point(0, 0),
+            draggable: true
         };
 
         $scope.visibilities = [

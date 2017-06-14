@@ -151,8 +151,6 @@ angular.module('ng-viet-ban-do')
                 }
             },
             controller: function ($scope, $element) {
-                this.map = {};
-                $scope.map = this.map;
             }
         };
     });

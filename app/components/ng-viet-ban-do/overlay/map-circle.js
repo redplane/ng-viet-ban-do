@@ -1,25 +1,20 @@
 'use strict';
 
 angular.module('ng-viet-ban-do')
-    .directive('mapMarker', function () {
+    .directive('mapCircle', function () {
         return {
             restrict: 'E',
-            template: '<div ng-transclude></div>',
-            transclude: true,
             require: '^ngVietMap',
             scope: {
-                anchorPoint: '=?',
-                crossOnDrag: '=',
-                draggable: '=',
-                cursor: '=?',
-                position: '=?',
-                shadow: '=?',
-                shape: '=?',
-                title: '=?',
-                opacity: '=?',
-                icon: '=?',
-                zIndex: '=?',
+                center: '=?',
+                fillColor: '=?',
+                fillOpacity: '=?',
+                strokeOpacity: '=?',
+                strokeWidth: '=?',
                 visible: '=?',
+                zIndex: '=?',
+                radius: '=?',
+                radius2: '=?',
 
                 // Event listeners
                 click: '&',
@@ -30,25 +25,25 @@ angular.module('ng-viet-ban-do')
                 dragEnd: '&',
                 mouseOver: '&',
                 mouseOut: '&',
+                mouseMove: '&',
                 mouseDown: '&',
-                mouseUp: '&'
+                mouseUp: '&',
+                centerChanged: '&',
+                radiusChanged: '&'
             },
             link: function (scope, element, attrs, controller) {
 
                 // List of properties which should be listened for changes.
                 var properties = [
-                    {name: 'anchorPoint', function: null, default: null},
-                    {name: 'crossOnDrag', function: null, default: null},
-                    {name: 'draggable', function: 'setDraggable', default: null},
-                    {name: 'cursor', function: 'setCursor', default: null},
-                    {name: 'position', function: 'setPosition', default: null},
-                    {name: 'shadow', function: 'setShadow', default: null},
-                    {name: 'shape', function: 'setShape', default: null},
-                    {name: 'title', function: 'setTitle', default: null},
-                    {name: 'opacity', function: 'setOpacity', default: null},
-                    {name: 'icon', function: 'setIcon', default: null},
-                    {name: 'zIndex', function: 'setZIndex', default: null},
-                    {name: 'visible', function: 'setVisible', default: true}
+                    {name: 'center', function: 'setCenter', default: null},
+                    {name: 'fillColor', function: 'setFillColor', default: 'black'},
+                    {name: 'fillOpacity', function: 'setFillOpacity', default: 0.5},
+                    {name: 'strokeOpacity', function: 'setStrokeOpacity', default: 0.5},
+                    {name: 'strokeWidth', function: 'setStrokeWidth', default: 1},
+                    {name: 'strokeColor', function: 'setStrokeColor', default: true},
+                    {name: 'visible', function: 'setVisible', default: true},
+                    {name: 'zIndex', function: 'setZIndex', default: 1},
+                    {name: 'radius', function: 'setRadius', default: 500}
                 ];
 
                 /*
@@ -58,13 +53,11 @@ angular.module('ng-viet-ban-do')
                     {name: 'click', alias: 'click'},
                     {name: 'dblclick', alias: 'doubleClick'},
                     {name: 'rightclick', alias: 'rightClick'},
-                    {name: 'dragstart', alias: 'dragStart'},
-                    {name: 'drag', alias: 'drag'},
-                    {name: 'dragEnd', alias: 'dragEnd'},
                     {name: 'mouseover', alias: 'mouseOver'},
                     {name: 'mouseout', alias: 'mouseOut'},
                     {name: 'mousedown', alias: 'mouseDown'},
-                    {name: 'mouseup', alias: 'mouseUp'}
+                    {name: 'mouseup', alias: 'mouseUp'},
+                    {name: 'bounds_changed', alias: 'boundsChanged'}
                 ];
 
                 /*
@@ -72,8 +65,8 @@ angular.module('ng-viet-ban-do')
                  * */
                 scope.$on('map-is-ready', function (event, args) {
 
-                    // Initiate marker.
-                    var options = new vietbando.MarkerOptions();
+                    // Initiate circle.
+                    var options = new vietbando.CircleOptions();
                     for (var index = 0; index < properties.length; index++) {
                         var property = properties[index];
                         if (scope[property.name] != null)
@@ -93,8 +86,9 @@ angular.module('ng-viet-ban-do')
                     }
 
                     options['map'] = args.map;
-                    // Initiate marker which will be attached into map.
-                    scope.marker = new vietbando.Marker(options);
+                    // Initiate circle which will be attached into map.
+                    scope.circle = new vietbando.Circle(options);
+                    //scope.circle.setMap(args.map);
 
                     // Listen to events list.
                     for (var iEventId = 0; iEventId < events.length; iEventId++) {
@@ -102,10 +96,8 @@ angular.module('ng-viet-ban-do')
                         var szEventName = pEvent.name;
                         var szAlias = pEvent.alias;
 
-                        scope.hookEvents(scope.marker, szEventName, szAlias);
+                        scope.hookEvents(scope.circle, szEventName, szAlias);
                     }
-
-                    scope.$broadcast('marker-is-ready', {map: args.map, marker: scope.marker});
                 });
 
                 /*
@@ -113,11 +105,11 @@ angular.module('ng-viet-ban-do')
                  * */
                 scope.listenChanges = function (szPropertyName, szFunctionName) {
                     // Find the name of property.
-                    scope.$watch(szPropertyName, function (current, past, innerScope) {
-                        if (innerScope.marker == null)
+                    scope.$watch(szPropertyName, function (current, past, internalScope) {
+                        if (internalScope.circle == null)
                             return;
 
-                        innerScope.marker[szFunctionName](current);
+                        internalScope.circle[szFunctionName](current);
                     })
 
                 };
@@ -125,9 +117,9 @@ angular.module('ng-viet-ban-do')
                 /*
                  * Listen to events.
                  * */
-                scope.hookEvents = function(marker, szEventName, szAlias){
+                scope.hookEvents = function(circle, szEventName, szAlias){
                     // Catch drag start event.
-                    vietbando.event.addListener(marker, szEventName, function (parameter) {
+                    vietbando.event.addListener(circle, szEventName, function (parameter) {
                         // Raise event on scope.
                         scope[szAlias]({parameter: parameter});
                     });

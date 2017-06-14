@@ -51,7 +51,7 @@ angular.module('ng-viet-ban-do')
                     {name: 'mouseover', alias: 'mouseOver'},
                     {name: 'mouseout', alias: 'mouseOut'},
                     {name: 'mousedown', alias: 'mouseDown'},
-                    {name: 'mouseup', alias: mouseup}
+                    {name: 'mouseup', alias: 'mouseUp'}
                 ];
 
                 /*
@@ -87,9 +87,9 @@ angular.module('ng-viet-ban-do')
 
                     // Listen to events list.
                     for (var iEventId = 0; iEventId < events.length; iEventId++) {
-                        var event = events[iEventId];
-                        var szEventName = event.name;
-                        var szAlias = event.alias;
+                        var pEvent = events[iEventId];
+                        var szEventName = pEvent.name;
+                        var szAlias = pEvent.alias;
 
                         scope.hookEvents(scope.polyline, szEventName, szAlias);
                     }
