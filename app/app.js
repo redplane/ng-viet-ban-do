@@ -4,17 +4,10 @@
 angular
     .module('ng-viet-ban-do-tutorial', [
         'ngRoute',
-        'pascalprecht.translate',
         'ng-viet-ban-do'
     ])
-    .config(['$locationProvider', '$routeProvider', '$translateProvider',
-        function ($locationProvider, $routeProvider, $translateProvider) {
-
-            // Use static files loader.
-            $translateProvider.useStaticFilesLoader({
-                prefix: 'assets/data/language/locale-',
-                suffix: '.json'
-            });
+    .config(['$locationProvider', '$routeProvider',
+        function ($locationProvider, $routeProvider) {
 
             // Url hash configuration
             $locationProvider

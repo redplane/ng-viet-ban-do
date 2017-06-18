@@ -103,7 +103,13 @@ angular.module('ng-viet-ban-do')
                 scope.listenChanges = function (szPropertyName, szFunctionName) {
                     // Find the name of property.
                     scope.$watch(szPropertyName, function (current, past, innerScope) {
+
+                        // Information window is unavailable.
                         if (innerScope.infoWindow == null)
+                            return;
+
+                        // Function is not available.
+                        if (!innerScope.infoWindow[szFunctionName])
                             return;
 
                         innerScope.infoWindow[szFunctionName](current);
