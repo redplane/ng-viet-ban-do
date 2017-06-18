@@ -10,7 +10,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Index</title>
+    <title>ng-viet-ban-do | Tutorial</title>
 
     <!-- Bootstrap Core CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
@@ -21,7 +21,7 @@
     <!-- Custom CSS -->
     <link href="assets/css/shop-homepage.css" rel="stylesheet">
 
-    <link rel="stylesheet" href="components/ng-viet-ban-do/map/map.css">
+    <link rel="stylesheet" href="directives/ng-viet-ban-do/map/map.css">
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -34,74 +34,130 @@
 
 <body ng-controller="NgVietBanDoTutorialController">
 
-<div class="col-lg-12">
+<!-- Navigation -->
+<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+    <div class="container">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse"
+                    data-target="#bs-example-navbar-collapse-1">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand"
+               href="javascript:void(0);">ng-viet-ban-do</a>
+        </div>
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav">
+                <li>
+                    <a href="#">About</a>
+                </li>
+                <li>
+                    <a href="#">Services</a>
+                </li>
+                <li>
+                    <a href="#">Contact</a>
+                </li>
+            </ul>
+        </div>
+        <!-- /.navbar-collapse -->
+    </div>
+    <!-- /.container -->
+</nav>
 
-    <!--Map area-->
+<div class="container">
+
+
     <div class="row">
-        <div class="panel panel-primary">
-            <div class="panel-body">
-                <ng-viet-map options="mapOptions">
 
-                    <!--Map marker-->
-                    <map-marker position="markerOptions.position"
-                                draggable="markerOptions.draggable">
-                        <info-window content="Hello world"
-                                     auto-pan="true"
-                                     position="infoWindowOptions.position"
-                                     attach-to-marker="true">
-                        </info-window>
-                    </map-marker>
+        <!--Sidebar-->
+        <div class="col-md-3">
+            <p class="lead">Basic map</p>
+            <div class="list-group">
+                <a href="javascript:void(0)"
+                   class="list-group-item active">Demo</a>
 
-                    <!--Custom marker-->
-                    <custom-marker position="position"></custom-marker>
+                <a href="javascript:void(0);"
+                   class="list-group-item">API</a>
 
-                    <!--Polyline example-->
-                    <map-polyline path="polyline.path"
-                                  stroke-color="polyline.strokeColor"
-                                  stroke-opacity="polyline.strokeOpacity"
-                                  stroke-width="polyline.strokeWidth"
-                                  visible="polyline.visible"
-                                  draw-arrows="polyline.drawArrows" draggable="true">
-                    </map-polyline>
-
-                    <!--Polygon-->
-                    <map-polygon paths="polygon.paths"
-                                 stroke-color="polygon.strokeColor"
-                                 stroke-opacity="polygon.strokeOpacity"
-                                 stroke-width="polygon.strokeWidth"
-                                 visible="polygon.visible"
-                                 z-index="polygon.zIndex"
-                                 fill-color="polygon.fillColor"
-                                 fill-opacity="polygon.fillOpacity"
-
-                                 click="clickPolygon(parameter)">
-                    </map-polygon>
-
-                    <!--Rectangle-->
-                    <map-rectangle bounds="rectangleOptions.bounds"
-                                   fill-color="rectangleOptions.fillColor"
-                                   fill-opacity="rectangleOptions.fillOpacity"
-                                   stroke-color="rectangleOptions.strokeColor"
-                                   stroke-width="rectangleOptions.strokeWidth"
-                                   stroke-opacity="rectangleOptions.strokeOpacity"
-                                   visible="rectangleOptions.visible"
-                                   z-index="rectangleOptions.zIndex">
-                    </map-rectangle>
-
-                    <!--Circle-->
-                    <map-circle center="circleOptions.center"
-                                fill-color="circleOptions.fillColor"
-                                fill-opacity="circleOptions.fillOpacity"
-                                stroke-opacity="circleOptions.strokeOpacity"
-                                stroke-width="circleOptions.strokeWidth"
-                                visible="circleOptions.visible"
-                                z-index="circleOptions.zIndex"
-                                radius="circleOptions.radius">
-                    </map-circle>
-                </ng-viet-map>
+                <a href="javascript:void(0);"
+                   class="list-group-item">Code</a>
             </div>
         </div>
+
+        <!--Main content-->
+        <div class="col-md-9">
+
+            <ng-viet-map options="mapOptions">
+
+                <!--Map marker-->
+                <map-marker position="markerOptions.position"
+                            draggable="markerOptions.draggable">
+                    <info-window content="Hello world"
+                                 auto-pan="true"
+                                 position="infoWindowOptions.position"
+                                 attach-to-marker="true">
+                    </info-window>
+                </map-marker>
+
+                <!--Custom marker-->
+                <custom-marker position="position"></custom-marker>
+
+                <!--Polyline example-->
+                <map-polyline path="polyline.path"
+                              stroke-color="polyline.strokeColor"
+                              stroke-opacity="polyline.strokeOpacity"
+                              stroke-width="polyline.strokeWidth"
+                              visible="polyline.visible"
+                              draw-arrows="polyline.drawArrows" draggable="true">
+                </map-polyline>
+
+                <!--Polygon-->
+                <map-polygon paths="polygon.paths"
+                             stroke-color="polygon.strokeColor"
+                             stroke-opacity="polygon.strokeOpacity"
+                             stroke-width="polygon.strokeWidth"
+                             visible="polygon.visible"
+                             z-index="polygon.zIndex"
+                             fill-color="polygon.fillColor"
+                             fill-opacity="polygon.fillOpacity"
+
+                             click="clickPolygon(parameter)">
+                </map-polygon>
+
+                <!--Rectangle-->
+                <map-rectangle bounds="rectangleOptions.bounds"
+                               fill-color="rectangleOptions.fillColor"
+                               fill-opacity="rectangleOptions.fillOpacity"
+                               stroke-color="rectangleOptions.strokeColor"
+                               stroke-width="rectangleOptions.strokeWidth"
+                               stroke-opacity="rectangleOptions.strokeOpacity"
+                               visible="rectangleOptions.visible"
+                               z-index="rectangleOptions.zIndex">
+                </map-rectangle>
+
+                <!--Circle-->
+                <map-circle center="circleOptions.center"
+                            fill-color="circleOptions.fillColor"
+                            fill-opacity="circleOptions.fillOpacity"
+                            stroke-opacity="circleOptions.strokeOpacity"
+                            stroke-width="circleOptions.strokeWidth"
+                            visible="circleOptions.visible"
+                            z-index="circleOptions.zIndex"
+                            radius="circleOptions.radius">
+                </map-circle>
+            </ng-viet-map>
+
+        </div>
+
     </div>
+
+</div>
+
+<div class="col-lg-12">
 
     <!--Polyline area-->
     <div class="row">
@@ -169,7 +225,8 @@
                                        id="polyline-hide-arrows"
                                        class="radio radio-inline"
                                        ng-value="false"
-                                       ng-model="polyline.drawArrows"> <label for="polyline-hide-arrows">Invisible</label>
+                                       ng-model="polyline.drawArrows"> <label
+                                    for="polyline-hide-arrows">Invisible</label>
                             </td>
                         </tr>
                         </tbody>
@@ -223,13 +280,15 @@
                                        id="rectangle-visible"
                                        class="radio radio-inline"
                                        ng-value="true"
-                                       ng-model="rectangleOptions.visible"> <label for="rectangle-visible">Visible</label>
+                                       ng-model="rectangleOptions.visible"> <label
+                                    for="rectangle-visible">Visible</label>
 
                                 <input type="radio"
                                        id="rectangle-invisible"
                                        class="radio radio-inline"
                                        ng-value="false"
-                                       ng-model="rectangleOptions.visible"> <label for="rectangle-invisible">Invisible</label>
+                                       ng-model="rectangleOptions.visible"> <label
+                                    for="rectangle-invisible">Invisible</label>
                             </td>
                         </tr>
                         <tr>
@@ -265,7 +324,7 @@
 
 <!--Static file hosting-->
 <!--<script type="text/javascript"-->
-        <!--src="http://developers.vietbando.com/V2/Scripts/MapsAPI.js?key=T1IcXLMNTy/PbYlzjeoZRFsWDT715UwZkcJRwt4an/KgKH7J8qeCaZWF5FYbTi5n2XNNFu2TqKLe9HUPqTO2y+5hKZLyCmPM"></script>-->
+<!--src="http://developers.vietbando.com/V2/Scripts/MapsAPI.js?key=T1IcXLMNTy/PbYlzjeoZRFsWDT715UwZkcJRwt4an/KgKH7J8qeCaZWF5FYbTi5n2XNNFu2TqKLe9HUPqTO2y+5hKZLyCmPM"></script>-->
 
 <!--Local registration-->
 <script type="text/javascript"
@@ -275,19 +334,21 @@
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.4/angular.min.js"></script>
 
 <!--Angular plugins-->
-<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.4/angular-route.min.js"></script>
-<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.4/angular-loader.min.js"></script>
+<script type="text/javascript"
+        src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.4/angular-route.min.js"></script>
+<script type="text/javascript"
+        src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.4/angular-loader.min.js"></script>
 
-<!--Angular components-->
-<script src="components/ng-viet-ban-do/index.js"></script>
-<script src="components/ng-viet-ban-do/map/map.js"></script>
-<script src="components/ng-viet-ban-do/marker/marker.js"></script>
-<script src="components/ng-viet-ban-do/marker/custom-marker.js"></script>
-<script src="components/ng-viet-ban-do/info-window/info-window.js"></script>
-<script src="components/ng-viet-ban-do/overlay/map-polyline.js"></script>
-<script src="components/ng-viet-ban-do/overlay/map-polygon.js"></script>
-<script src="components/ng-viet-ban-do/overlay/map-rectangle.js"></script>
-<script src="components/ng-viet-ban-do/overlay/map-circle.js"></script>
+<!--Angudirectivesents-->
+<script src="directives/ng-viet-ban-do/index.js"></script>
+<script src="directives/ng-viet-ban-do/map/map.js"></script>
+<script src="directives/ng-viet-ban-do/marker/marker.js"></script>
+<script src="directives/ng-viet-ban-do/marker/custom-marker.js"></script>
+<script src="directives/ng-viet-ban-do/info-window/info-window.js"></script>
+<script src="directives/ng-viet-ban-do/overlay/map-polyline.js"></script>
+<script src="directives/ng-viet-ban-do/overlay/map-polygon.js"></script>
+<script src="directives/ng-viet-ban-do/overlay/map-rectangle.js"></script>
+<script src="directives/ng-viet-ban-do/overlay/map-circle.js"></script>
 
 <!--Angular application-->
 <script src="app.js"></script>

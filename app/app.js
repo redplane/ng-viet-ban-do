@@ -1,6 +1,6 @@
 'use strict';
 
-// Declare app level module which depends on views, and components
+// Declare app level module which depends on views, and directives
 angular
     .module('ng-viet-ban-do-tutorial', [
         'ngRoute',

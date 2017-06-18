@@ -4,7 +4,7 @@ angular.module('ng-viet-ban-do')
     .directive('ngVietMap', function () {
         return {
             restrict: 'E',
-            templateUrl: "components/ng-viet-ban-do/map/map.html",
+            templateUrl: "directives/ng-viet-ban-do/map/map.html",
             transclude: true,
             scope: {
                 center: '=?',
