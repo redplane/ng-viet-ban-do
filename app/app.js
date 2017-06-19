@@ -4,7 +4,8 @@
 angular
     .module('ng-viet-ban-do-tutorial', [
         'ngRoute',
-        'ng-viet-ban-do'
+        'ng-viet-ban-do',
+        'basic-map'
     ])
     .config(['$locationProvider', '$routeProvider',
         function ($locationProvider, $routeProvider) {
@@ -14,7 +15,7 @@ angular
                 .hashPrefix('!');
 
             // Fallback url.
-            $routeProvider.otherwise({redirectTo: '/ng-viet-ban-do-tutorial'});
+            $routeProvider.otherwise({redirectTo: '/'});
 
         }])
     .controller('NgVietBanDoTutorialController', ['$scope', function ($scope) {
