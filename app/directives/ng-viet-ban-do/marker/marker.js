@@ -94,7 +94,7 @@ angular.module('ng-viet-ban-do')
 
                     options['map'] = args.map;
                     // Initiate marker which will be attached into map.
-                    scope.marker = new vietbando.Marker(options);
+                    scope.marker = new vietbando.CustomMarker(options);
 
                     // Listen to events list.
                     for (var iEventId = 0; iEventId < events.length; iEventId++) {

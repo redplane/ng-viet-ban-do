@@ -5,7 +5,14 @@ angular
     .module('ng-viet-ban-do-tutorial', [
         'ngRoute',
         'ng-viet-ban-do',
-        'basic-map'
+        'basic-map',
+        'basic-marker',
+        'custom-marker',
+        'map-rectangle',
+        'map-circle',
+        'map-polyline',
+        'map-polygon',
+        'main-component'
     ])
     .config(['$locationProvider', '$routeProvider',
         function ($locationProvider, $routeProvider) {
@@ -59,20 +66,7 @@ angular
             visible: true
         };
 
-        /*
-        * Rectangle configuration
-        * */
-        $scope.rectangleOptions = {
-            bounds: new vbd.LatLngBounds(new vietbando.LatLng(10.970516, 106.408081), new vbd.LatLng(12.229635, 108.858032)),
-            draggable: true,
-            fillColor: 'blue',
-            fillOpacity: 1,
-            strokeColor: 'green',
-            strokeWidth: 1,
-            strokeOpacity: 1,
-            visible: true,
-            zIndex: 10
-        };
+
 
         /*
         * Map circle settings.

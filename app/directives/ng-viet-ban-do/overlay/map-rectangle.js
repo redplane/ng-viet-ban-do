@@ -14,6 +14,7 @@ angular.module('ng-viet-ban-do')
                 strokeOpacity: '=?',
                 visible: '=?',
                 zIndex: '=?',
+                draggable: '=?',
 
                 // Event listeners
                 click: '&',
@@ -37,7 +38,8 @@ angular.module('ng-viet-ban-do')
                     {name: 'strokeWidth', function: 'setStrokeWidth', default: false},
                     {name: 'strokeOpacity', function: 'setStrokeOpacity', default: null},
                     {name: 'visible', function: 'setVisible', default: true},
-                    {name: 'zIndex', function: null, default: null}
+                    {name: 'zIndex', function: null, default: null},
+                    {name: 'draggable', function: null, default: null}
                 ];
 
                 /*

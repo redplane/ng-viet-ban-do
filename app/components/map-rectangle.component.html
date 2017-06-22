@@ -1,0 +1,305 @@
+<div class="row">
+    <!--Sidebar-->
+    <div class="col-md-3">
+        <p class="lead">Map rectangle</p>
+        <div class="list-group">
+            <a href="#custom-marker-demo"
+               class="list-group-item">Demo</a>
+
+            <a href="javascript:void(0);"
+               class="list-group-item">Options</a>
+
+            <a href="javascript:void(0);"
+               class="list-group-item">Events</a>
+
+            <a href="javascript:void(0);"
+               class="list-group-item">Code</a>
+        </div>
+    </div>
+
+    <!--Main content-->
+    <div class="col-md-9">
+
+        <div id="mapDemo"
+             class="panel panel-primary">
+
+            <div class="panel-heading">
+                Demo
+            </div>
+            <div class="panel-body">
+                <ng-viet-map background-color="options.backgroundColor"
+                             center="options.center"
+                             layer="options.layer"
+                             disable-double-click-zoom="options.disableDoubleClickZoom"
+                             scroll-wheel="options.scrollWheel"
+                             limit-bounds="limitBounds"
+                             map-type-id="0"
+                             min-zoom="options.minZoom"
+                             max-zoom="options.maxZoom"
+                             zoom="options.zoom"
+                             is-move-insert="options.isMoveInsert"
+                             extend-tile="options.extendTile"
+                             zoom-control="options.zoomControl"
+                             scale-control="options.scaleControl">
+
+                    <!--Rectangle-->
+                    <map-rectangle bounds="mapRectangleOptions.bounds"
+                                   draggable="mapRectangleOptions.draggable"
+                                   fill-color="mapRectangleOptions.fillColor"
+                                   fill-opacity="mapRectangleOptions.fillOpacity"
+                                   stroke-color="mapRectangleOptions.strokeColor"
+                                   stroke-width="mapRectangleOptions.strokeWidth"
+                                   stroke-opacity="mapRectangleOptions.strokeOpacity"
+                                   visible="mapRectangleOptions.visible"
+                                   z-index="mapRectangleOptions.zIndex">
+                    </map-rectangle>
+                </ng-viet-map>
+            </div>
+        </div>
+
+        <div id="options"
+             class="panel panel-info">
+
+            <div class="panel-heading">
+                Options
+            </div>
+            <div class="panel-body">
+                <table class="table table-bordered ng-scope">
+                    <thead>
+                    <tr>
+                        <th>Properties</th>
+                        <th>Type</th>
+                        <th>Description</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td>
+                            <code>backgroundColor</code>
+                        </td>
+                        <td>
+                            string
+                        </td>
+                        <td>
+                            Color background của mapDiv
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <code>center</code>
+                        </td>
+                        <td>
+                            <!-- ngRepeat: x in ['LatLng'] --><a href="" ng-click="gotoAnchor(x)"
+                                                                 ng-repeat="x in ['LatLng']" class="ng-scope">LatLng</a>
+                            <!-- end ngRepeat: x in ['LatLng'] -->
+                        </td>
+                        <td>
+                            Center của Map lúc khởi động.
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <code>layer</code>
+                        </td>
+                        <td>
+                            <a href="" ng-click="gotoAnchor('Layer')">Layer hoặc [layer1,layer2,....]</a>
+                        </td>
+                        <td>
+                            Khởi động Map với layer. Nếu layer là null thì lấy layer mặc định.
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <code>disableDoubleClickZoom</code>
+                        </td>
+                        <td>
+                            boolean
+                        </td>
+                        <td>
+                            Cho phép double click zoom Map hay không. Mặc định là false
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <code> scrollWheel</code>
+                        </td>
+                        <td>
+                            boolean
+                        </td>
+                        <td>
+                            Cho phép scroll chuột để zoom Map hay không. Mặc định là true
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <code> limitBounds</code>
+                        </td>
+                        <td>
+                            <a href="" ng-click="gotoAnchor('LatLngBounds')"><em>LatLngBounds</em></a>
+                        </td>
+                        <td>
+                            Giới hạn khung bao của map. Mặc định là null
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <code>mapTypeId</code>
+                        </td>
+                        <td>
+                            <a href="" ng-click="gotoAnchor('MapTypeId')">MapTypeId</a>
+                        </td>
+                        <td>
+                            Khởi động Map mapTypeId. Mặc định là ROADMAP.
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <code> minZoom</code>
+                        </td>
+                        <td>
+                            number
+                        </td>
+                        <td>
+                            Mức zoom level nhỏ nhất của Map
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <code>maxZoom</code>
+                        </td>
+                        <td>
+                            number
+                        </td>
+                        <td>
+                            Mức zoom level lớn nhất của Map
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <code>zoom</code>
+                        </td>
+                        <td>
+                            number
+                        </td>
+                        <td>
+                            Mức zoom của Map lúc khởi động.
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <code>isMoveInsert</code>
+                        </td>
+                        <td>
+                            boolean
+                        </td>
+                        <td>
+                            Nếu true thì khi drag Map sẽ tự động vẽ lại, Ngược lại dragend mới vẽ lại. Mặc định là true
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <code> extendTile</code>
+                        </td>
+                        <td>
+                            number
+                        </td>
+                        <td>
+                            Mở rộng Map. Mặc định là 0.
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <code>zoomControl</code>
+                        </td>
+                        <td>
+                            boolean
+                        </td>
+                        <td>
+                            Khởi động Map có control zoom, và zoom fit. Mặc định là true
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <code>zoomControlOptions</code>
+                        </td>
+                        <td>
+                            Object
+                        </td>
+                        <td>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <code>scaleControl</code>
+                        </td>
+                        <td>
+                            boolean
+                        </td>
+                        <td>
+                            Khởi động Map có scale Control. Mặc định là true
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <code>scaleControlOptions</code>
+                        </td>
+                        <td>
+                            Object
+                        </td>
+                        <td>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <div id="events"
+             class="panel panel-warning">
+
+            <div class="panel-heading">
+                Events
+            </div>
+            <div class="panel-body">
+                <table class="table table-responsive table-condensed">
+                    <thead>
+                    <tr>
+                        <th class="text-center">Events</th>
+                        <th class="text-center">Description</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr></tr>
+                    <tr></tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <div id="mapCode"
+             class="panel panel-default">
+            <div class="panel-heading">
+                Code
+            </div>
+            <div class="panel-body">
+                <pre>
+                    &lt;ng-viet-map background-color="options.backgroundColor"
+                                    center="options.center"
+                                    layer="options.layer"
+                                    disable-double-click-zoom="options.disableDoubleClickZoom"
+                                    scroll-wheel="options.scrollWheel"
+                                    limit-bounds="limitBounds"
+                                    map-type-id="options.mapTypeId"
+                                    min-zoom="options.minZoom"
+                                    max-zoom="options.maxZoom"
+                                    zoom="options.zoom"
+                                    is-move-insert="options.isMoveInsert"
+                                    extend-tile="options.extendTile"
+                                    zoom-control="options.zoomControl"
+                                    scale-control="options.scaleControl"&gt;&lt;/ng-viet-map&gt;
+                </pre>
+            </div>
+        </div>
+    </div>
+
+</div>
