@@ -1,0 +1,131 @@
+{
+  "properties":[
+    {
+      "name": "background-color",
+      "type": "string",
+      "description": "Color of map background."
+    },
+    {
+      "name": "center",
+      "type": "LatLng",
+      "description": "Center of map, which view point should be focus on initially."
+    },
+    {
+      "name": "disable-double-click-zoom",
+      "type": "boolean",
+      "description": "Whether double click can help user zoom into map or not."
+    },
+    {
+      "name": "scroll-wheel",
+      "type": "boolean",
+      "description": "Whether mouse scroll can help user zoom into or out of map."
+    },
+    {
+      "name": "limit-bounds",
+      "type": "LatLngBounds",
+      "description": "Limitation of map boundary."
+    },
+    {
+      "name": "map-type-id",
+      "type": "MapTypeId",
+      "description": "Type of map."
+    },
+    {
+      "name": "min-zoom",
+      "type": "integer",
+      "description": "Minimum zoom level of map."
+    },
+    {
+      "name": "max-zoom",
+      "type": "integer",
+      "description": "Maximum zoom level of map."
+    },
+    {
+      "name": "zoom",
+      "type": "integer",
+      "description": "Initial zoom level"
+    },
+    {
+      "name": "is-move-insert",
+      "type": "boolean",
+      "description": "Whether components in map are re-drawn when map moves or when map is finished dragging."
+    },
+    {
+      "name": "extend-tile",
+      "type": "integer",
+      "description": "Map expansibility"
+    },
+    {
+      "name": "zoom-control",
+      "type": "boolean",
+      "description": "Whether zoom controls are available on map or not."
+    },
+    {
+      "name": "scale-control",
+      "type": "boolean",
+      "description": "Whether scale controls are available on map or not."
+    }
+  ],
+  "events":[
+    {
+      "name": "click",
+      "description": "Raised when user clicks on map."
+    },
+    {
+      "name": "double-click",
+      "description": "Raised when user double clicks on map."
+    },
+    {
+      "name": "right-click",
+      "description": "Raised when user right clicks on map."
+    },
+    {
+      "name": "zoom-start",
+      "description": "Raised when user starts zooming on map."
+    },
+    {
+      "name": "zoom-end",
+      "description": "Raised when user finishes zooming on map."
+    },
+    {
+      "name": "drag-start",
+      "description": "Raised when user starts dragging map."
+    },
+    {
+      "name": "drag",
+      "description": "Raised when user is dragging map."
+    },
+    {
+      "name": "drag-end",
+      "description": "Raised when user finishes dragging map."
+    },
+    {
+      "name": "map-type-id-changed",
+      "description": "Raised when map type id is changed."
+    },
+    {
+      "name": "mouse-over",
+      "description": "Raised when mouse moves over map."
+    },
+    {
+      "name": "mouse-out",
+      "description": "Raised when mouse moves from map to its outside."
+    },
+    {
+      "name": "center-changed",
+      "description": "Raised when center of map is changed."
+    },
+    {
+      "name": "zoom-changed",
+      "description": "Raised when zoom level of map is changed."
+    },
+    {
+      "name": "resize",
+      "description": "Raised when map is re-sized."
+    },
+    {
+      "name": "bound-change",
+      "description": "Raised when map boundary is changed."
+    }
+  ]
+}

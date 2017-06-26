@@ -1,5 +1,6 @@
 <!-- Page Content -->
-<div class="container">
+<div class="container"
+     ng-init="init()">
 
     <!-- Portfolio Item Heading -->
     <div class="row">
@@ -20,7 +21,8 @@
 
         <div class="col-md-4">
             <h3>Project description</h3>
-            <p>This directive is a wrapper of vietbando. You can find the original project <a href="http://maps.vietbando.com/maps/">here</a></p>
+            <p>This directive is a wrapper of vietbando. You can find the original project <a
+                    href="http://maps.vietbando.com/maps/">here</a></p>
             <h3>Original components</h3>
             <ul>
                 <li>
@@ -60,52 +62,19 @@
             <h3 class="page-header">Wrapped directives</h3>
         </div>
 
-        <div class="col-sm-3 col-xs-12">
-            <a href="#!basic-map" data-toggle="tooltip" title="Basic map">
-                <img class="img-responsive form-group" src="../assets/image/basic-map.png" alt="Basic map">
-            </a>
-        </div>
-
-        <div class="col-sm-3 col-xs-12">
-            <a href="#!basic-marker" data-toggle="tooltip" title="Basic marker">
-                <img class="img-responsive form-group" src="../assets/image/basic-marker.png" alt="Basic marker">
-            </a>
-        </div>
-
-        <div class="col-sm-3 col-xs-12">
-            <a href="#!custom-marker" data-toggle="tooltip" title="Custom marker">
-                <img class="img-responsive form-group" src="../assets/image/custom-marker.png" alt="Custom marker">
-            </a>
-        </div>
-
-        <div class="col-sm-3 col-xs-12">
-            <a href="#!info-window" data-toggle="tooltip" title="Info window">
-                <img class="img-responsive form-group" src="../assets/image/info-window.png" alt="Info window">
-            </a>
-        </div>
-
-        <div class="col-sm-3 col-xs-12">
-            <a href="#!map-polyline" data-toggle="tooltip" title="Polyline">
-                <img class="img-responsive form-group" src="../assets/image/map-polyline.png" alt="Polyline">
-            </a>
-        </div>
-
-        <div class="col-sm-3 col-xs-12">
-            <a href="#!map-polygon" data-toggle="tooltip" title="Polygon">
-                <img class="img-responsive form-group" src="../assets/image/map-polygon.png" alt="Polygon">
-            </a>
-        </div>
-
-        <div class="col-sm-3 col-xs-12">
-            <a href="#!map-rectangle" data-toggle="tooltip" title="Rectangle">
-                <img class="img-responsive form-group" src="../assets/image/map-rectangle.png" alt="Rectangle">
-            </a>
-        </div>
-
-        <div class="col-sm-3 col-xs-12">
-            <a href="#!map-circle" data-toggle="tooltip" title="Circle">
-                <img class="img-responsive form-group" src="../assets/image/map-circle.png" alt="Circle">
-            </a>
+        <div class="col-sm-4 col-xs-12"
+             ng-repeat="directive in directives">
+            <div class="panel panel-info">
+                <div class="panel-heading">
+                    <a ng-href="{{directive.url}}">{{directive.name}}</a>
+                </div>
+                <div class="panel-body">
+                    <img class="img-responsive"
+                         style="margin-left:auto; margin-right:auto;"
+                         ng-src="{{directive.image}}"
+                         alt="{{directive.name}}">
+                </div>
+            </div>
         </div>
     </div>
     <!-- /Wrapped directives -->
@@ -119,7 +88,6 @@
                 <p>Copyright &copy; Your Website 2014</p>
             </div>
         </div>
-        <!-- /.row -->
     </footer>
 
 </div>

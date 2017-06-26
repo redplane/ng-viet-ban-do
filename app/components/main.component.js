@@ -4,7 +4,7 @@
 /**
  * Created by Akai on 6/19/2017.
  */
-angular.module('main-component', ['ngRoute'])
+angular.module('main-component', ['ngRoute', 'showcaseModule'])
     .config(['$locationProvider', '$routeProvider',
         function ($locationProvider, $routeProvider) {
 
@@ -23,7 +23,29 @@ angular.module('main-component', ['ngRoute'])
                     templateUrl: 'components/main.component.html'
                 });
         }])
-    .controller('MainComponentController', ['$scope', function ($scope) {
+    .controller('MainComponentController', ['$scope', 'showcaseService',
+        function ($scope, showcaseService) {
 
+        //#region Properties
+
+        // List of directives information.
+        $scope.directives = null;
+
+        //#endregion
+
+        /*
+         * Called when component has been initiated successfully.
+         * */
+        $scope.init = function () {
+            showcaseService.getDirectivesList()
+                .then(function (x) {
+
+                    // Read the returned data.
+                    var data = x.data;
+
+                    // Read directives list.
+                    $scope.directives = data.directives;
+                });
+        }
 
     }]);

@@ -1,0 +1,44 @@
+{
+  "directives":[
+    {
+      "name": "Map",
+      "url": "#!basic-map",
+      "image": "/assets/image/basic-map.png"
+    },
+    {
+      "name": "Marker",
+      "url": "#!basic-marker",
+      "image": "/assets/image/basic-marker.png"
+    },
+    {
+      "name": "Custom marker",
+      "url": "#!custom-marker",
+      "image": "/assets/image/custom-marker.png"
+    },
+    {
+      "name": "Info window",
+      "url": "#!info-window",
+      "image": "/assets/image/info-window.png"
+    },
+    {
+      "name": "Polyline",
+      "url": "#!map-polyline",
+      "image": "/assets/image/map-polyline.png"
+    },
+    {
+      "name": "Polygon",
+      "url": "#!map-polygon",
+      "image": "/assets/image/map-polygon.png"
+    },
+    {
+      "name": "Rectangle",
+      "url": "#!map-rectangle",
+      "image": "/assets/image/map-rectangle.png"
+    },
+    {
+      "name": "Circle",
+      "url": "#!map-circle",
+      "image": "/assets/image/map-circle.png"
+    }
+  ]
+}
