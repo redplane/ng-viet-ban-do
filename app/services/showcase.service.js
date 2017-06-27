@@ -35,4 +35,25 @@ angular.module('showcaseModule')
         this.getCustomMarkerInfo = function(){
             return $http.get('/assets/data/parameter-config/custom-marker.json');
         };
+
+        /*
+        * Get info-window information.
+        * */
+        this.getInfoWindowInfo = function(){
+            return $http.get('/assets/data/parameter-config/info-window.json');
+        };
+
+        /*
+        * Get map polyline information.
+        * */
+        this.getMapPolylineInfo = function(){
+            return $http.get('/assets/data/parameter-config/map-polyline.json');
+        };
+
+        /*
+        * Get map polygon information.
+        * */
+        this.getMapPolygonInfo = function(){
+            return $http.get('/assets/data/parameter-config/map-polygon.json');
+        };
     }]);

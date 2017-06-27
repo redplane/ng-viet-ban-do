@@ -1,7 +1,4 @@
 /**
- * Created by Linh Nguyen on 6/19/2017.
- */
-/**
  * Created by Akai on 6/19/2017.
  */
 angular.module('main-component', ['ngRoute', 'showcaseModule'])

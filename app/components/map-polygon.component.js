@@ -4,7 +4,7 @@
 /**
  * Created by Akai on 6/19/2017.
  */
-angular.module('map-polygon', ['ngRoute'])
+angular.module('map-polygon', ['ngRoute', 'showcaseModule'])
     .config(['$locationProvider', '$routeProvider',
         function ($locationProvider, $routeProvider) {
 
@@ -19,11 +19,16 @@ angular.module('map-polygon', ['ngRoute'])
                     templateUrl: 'components/map-polygon.component.html'
                 });
         }])
-    .controller('MapPolygonComponentController', ['$scope', function ($scope) {
+    .controller('MapPolygonComponentController', [
+        '$scope', 'showcaseService',
+        function ($scope, showcaseService) {
 
-        /*
-         * Option of map.
-         * */
+        //#region Properties
+
+        // Information which will be displayed on the screen.
+        $scope.information = null;
+
+        // Map option.
         $scope.options = {
             backgroundColor: 'green',
             center: new vietbando.LatLng(10.8152328, 106.680505),
@@ -41,10 +46,8 @@ angular.module('map-polygon', ['ngRoute'])
             scaleControl: false
         };
 
-        /*
-         * Rectangle configuration
-         * */
-        $scope.polygonOptions = {
+        // Polygon option
+        $scope.polygon = {
             fillColor: 'yellow',
             fillOpacity: 1,
             paths: [
@@ -58,4 +61,28 @@ angular.module('map-polygon', ['ngRoute'])
             zIndex: 100,
             visible: true
         };
+
+        //#endregion
+
+        //#region Methods
+
+        /*
+        * Called when component has been initiated successfully.
+        * */
+        $scope.init = function(){
+            // Load information displayed on the screen.
+            $scope.loadInfo();
+        };
+
+        /*
+        * Load information which will be dis
+        * */
+        $scope.loadInfo = function(){
+            showcaseService.getMapPolygonInfo()
+                .then(function(x){
+                    $scope.information = x.data;
+                });
+        }
+
+        //#endregion
     }]);

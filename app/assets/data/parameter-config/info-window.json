@@ -1,0 +1,52 @@
+{
+  "properties":[
+    {
+      "name": "content",
+      "type": "string",
+      "description": "Content of info window"
+    },
+    {
+      "name": "auto-pan",
+      "type": "boolean",
+      "description": "Whether map will be dragged to info window or not."
+    },
+    {
+      "name": "pixel-offset",
+      "type": "Size",
+      "description": "Adjust container to position."
+    },
+    {
+      "name": "position",
+      "type": "LatLng",
+      "description": "Position of info window on map."
+    },
+    {
+      "name": "z-index",
+      "type": "integer",
+      "description": "Z index of info window."
+    },
+    {
+      "name": "attach-to-marker",
+      "type": "boolean",
+      "description": "Whether info window is attached to marker or map."
+    }
+  ],
+  "events":[
+    {
+      "name": "close-click",
+      "description": "Raised when info window is closed."
+    },
+    {
+      "name": "content-changed",
+      "description": "Raised when content is changed."
+    },
+    {
+      "name": "position-changed",
+      "description": "Raised when position of info window is changed."
+    },
+    {
+      "name": "zindex-changed",
+      "description": "Raised when z index is changed."
+    }
+  ]
+}

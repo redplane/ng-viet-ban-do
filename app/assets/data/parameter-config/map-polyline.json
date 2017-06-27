@@ -1,0 +1,80 @@
+{
+  "properties":[
+    {
+      "name": "path",
+      "type": "LatLng[]",
+      "description": "Polyline paths collection."
+    },
+    {
+      "name": "stroke-color",
+      "type": "string",
+      "description": "Color of polyline."
+    },
+    {
+      "name": "stroke-opacity",
+      "type": "float",
+      "description": "Opacity of stroke. (From 0.0 - 1.0)"
+    },
+    {
+      "name": "stroke-width",
+      "type": "boolean",
+      "description": "Width of stroke"
+    },
+    {
+      "name": "visible",
+      "type": "boolean",
+      "description": "Whether stroke is visible or not."
+    },
+    {
+      "name": "draw-arrows",
+      "type": "boolean",
+      "description": "Whether arrows on line are drawn or not."
+    },
+    {
+      "name": "draggable",
+      "type": "boolean",
+      "description": "Whether polyline is draggable or not."
+    },
+    {
+      "name": "repeat-arrow",
+      "type": "boolean",
+      "description": "Space between 2 arrows. (pixel)"
+    },
+    {
+      "name": "width-arrow",
+      "type": "boolean",
+      "description": "Width of arrow. (pixel)"
+    }
+  ],
+  "events":[
+    {
+      "name": "click",
+      "description": "Raised when polyline is clicked."
+    },
+    {
+      "name": "double-click",
+      "description": "Raised when polyline is double clicked."
+    },
+    {
+      "name": "right-click",
+      "description": "Raised when polyline is right clicked."
+    },
+    {
+      "name": "mouse-over",
+      "description": "Raised when mouse moves over the polyline."
+    },
+    {
+      "name": "mouse-out",
+      "description": "Raised when mouse moves out of the polyline."
+    },
+    {
+      "name": "mouse-down",
+      "description": "Raised when mouse is pressed down on polyline."
+    },
+    {
+      "name": "mouse-up",
+      "description": "Raised when mouse is released from polyline."
+    }
+  ]
+
+}

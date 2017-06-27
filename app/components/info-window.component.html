@@ -2,9 +2,9 @@
      ng-init="init()">
     <!--Sidebar-->
     <div class="col-md-3">
-        <p class="lead">Map polyline</p>
+        <p class="lead">Info window</p>
         <div class="list-group">
-            <a href="#map-polyline-demo"
+            <a href="#mapDemo"
                class="list-group-item">Demo</a>
 
             <a href="javascript:void(0);"
@@ -30,15 +30,10 @@
             <div class="panel-body">
                 <ng-viet-map center="map.center"
                              zoom="map.zoom">
-                    <!--Polyline-->
-                    <map-polyline path="polyline.path"
-                                  stroke-color="polyline.strokeColor"
-                                  stroke-opacity="polyline.strokeOpacity"
-                                  stroke-width="polyline.strokeWidth"
-                                  visible="polyline.visible"
-                                  draw-arrows="polyline.drawArrows"
-                                  draggable="polyline.draggable">
-                    </map-polyline>
+                    <info-window position="infoWindow.position"
+                                 content="{{infoWindow.content}}"
+                                 attach-to-marker="false">
+                    </info-window>
                 </ng-viet-map>
             </div>
         </div>
@@ -46,12 +41,11 @@
         <div id="options"
              class="panel panel-info"
              ng-if="information != null && information.properties != null">
-
             <div class="panel-heading">
                 Properties
             </div>
             <div class="panel-body">
-                <table class="table table-responsive table-bordered">
+                <table class="table table-bordered">
                     <thead>
                     <tr>
                         <th class="text-center">Properties</th>
@@ -77,16 +71,16 @@
         </div>
 
         <div id="events"
-             class="panel panel-warning">
-
+             class="panel panel-warning"
+             ng-if="information != null && information.events != null">
             <div class="panel-heading">
                 Events
             </div>
             <div class="panel-body">
-                <table class="table table-responsive table-bordered">
+                <table class="table table-bordered">
                     <thead>
                     <tr>
-                        <th class="text-center">Events</th>
+                        <th class="text-center">Name</th>
                         <th class="text-center">Description</th>
                     </tr>
                     </thead>
@@ -95,9 +89,7 @@
                         <td>
                             <code>{{event.name}}</code>
                         </td>
-                        <td>
-                            {{event.description}}
-                        </td>
+                        <td>{{event.description}}</td>
                     </tr>
                     </tbody>
                 </table>

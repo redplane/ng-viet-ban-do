@@ -1,0 +1,74 @@
+{
+  "properties":[
+    {
+      "name": "paths",
+      "type": "",
+      "description": ""
+    },
+    {
+      "name": "fill-color",
+      "type": "",
+      "description": ""
+    },
+    {
+      "name": "fill-opacity",
+      "type": "",
+      "description": ""
+    },
+    {
+      "name": "z-index",
+      "type": "",
+      "description": ""
+    },
+    {
+      "name": "visible",
+      "type": "",
+      "description": ""
+    },
+    {
+      "name": "stroke-color",
+      "type": "",
+      "description": ""
+    },
+    {
+      "name": "stroke-opacity",
+      "type": "",
+      "description": ""
+    },
+    {
+      "name": "stroke-width",
+      "type": "",
+      "description": ""
+    }
+  ],
+  "events": [
+    {
+      "name": "click",
+      "description": "Raised when polygon is clicked."
+    },
+    {
+      "name": "double-click",
+      "description": "Raised when polygon is doubly clicked."
+    },
+    {
+      "name": "right-click",
+      "description": "Raised when polygon is right clicked."
+    },
+    {
+      "name": "mouse-over",
+      "description": "Raised when mouse moves over polygon."
+    },
+    {
+      "name": "mouse-move",
+      "description": "Raised when mouse moves on polygon."
+    },
+    {
+      "name": "mouse-down",
+      "description": "Raised when mouse is pressed down to polygon."
+    },
+    {
+      "name": "mouse-up",
+      "description": "Raised when mouse is released from polygon."
+    }
+  ]
+}

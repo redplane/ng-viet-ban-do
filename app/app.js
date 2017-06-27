@@ -8,6 +8,7 @@ angular
         'basic-map',
         'basic-marker',
         'custom-marker',
+        'info-window',
         'map-rectangle',
         'map-circle',
         'map-polyline',
