@@ -1,7 +1,4 @@
 /**
- * Created by Linh Nguyen on 6/19/2017.
- */
-/**
  * Created by Akai on 6/19/2017.
  */
 angular.module('basic-marker', ['ngRoute', 'showcaseModule'])
@@ -28,7 +25,7 @@ angular.module('basic-marker', ['ngRoute', 'showcaseModule'])
             // Options of map.
             $scope.options = {
                 backgroundColor: 'red',
-                center: new vietbando.LatLng(17.01476753, 106.76513672),
+                center: new vietbando.LatLng(10.8152328, 106.680505),
                 layer: null,
                 disableDoubleClickZoom: true,
                 scrollWheel: true,
@@ -36,7 +33,7 @@ angular.module('basic-marker', ['ngRoute', 'showcaseModule'])
                 mapTypeId: 'TERRAIN',
                 minZoom: null,
                 maxZoom: null,
-                zoom: 1,
+                zoom: 10,
                 isMoveInsert: false,
                 extendTile: 0,
                 zoomControl: false,
@@ -44,42 +41,16 @@ angular.module('basic-marker', ['ngRoute', 'showcaseModule'])
             };
 
             // Settings of marker.
-            $scope.markerSettings = [
+            $scope.markers = [
                 {
                     anchorPoint: null,
                     crossOnDrag: true,
                     draggable: false,
                     cursor: 'default',
-                    position: new vietbando.LatLng(21.39170473, 105.85327148),
+                    position: new vietbando.LatLng(10.8152328, 106.680505),
                     shadow: null,
                     shape: null,
                     title: 'Area 01',
-                    opacity: 1,
-                    zIndex: 999,
-                    visible: true
-                },
-                {
-                    anchorPoint: null,
-                    crossOnDrag: true,
-                    draggable: true,
-                    cursor: 'default',
-                    position: new vietbando.LatLng(17.76961225, 106.02905273),
-                    shadow: null,
-                    shape: null,
-                    title: 'Area 02',
-                    opacity: 1,
-                    zIndex: 999,
-                    visible: true
-                },
-                {
-                    anchorPoint: null,
-                    crossOnDrag: true,
-                    draggable: true,
-                    cursor: 'default',
-                    position: new vietbando.LatLng(20.76961225, 106.02905273),
-                    shadow: null,
-                    shape: null,
-                    title: 'Area 03',
                     opacity: 1,
                     zIndex: 999,
                     visible: true
@@ -99,6 +70,18 @@ angular.module('basic-marker', ['ngRoute', 'showcaseModule'])
             $scope.init = function () {
                 // Load information.
                 $scope.loadInfo();
+
+                // Initiate a marker.
+
+                var position = new vietbando.LatLng(16.404470456702423, 107.2320556640625);
+                var marker = _.cloneDeep($scope.markers[0]);
+                marker.position = position;
+                marker['icon'] = new vietbando.Icon({
+                    url: '/assets/icon/marker-32.ico',
+                    size: new vietbando.Size(32, 32)
+                });
+
+                $scope.markers.push(marker);
             };
 
             /*

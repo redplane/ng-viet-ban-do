@@ -43,18 +43,19 @@
                              zoom-control="options.zoomControl"
                              scale-control="options.scaleControl">
 
-                    <map-marker ng-repeat="setting in markerSettings"
-                                anchor-point="setting.anchorPoint"
-                                cross-on-drag="setting.crossOnDrag"
-                                draggable="setting.draggable"
-                                cursor="setting.cursor"
-                                position="setting.position"
-                                shadow="setting.shadow"
-                                shape="setting.shape"
-                                title="setting.title"
-                                opacity="setting.opacity"
-                                z-index="setting.zIndex"
-                                visible="setting.visible">
+                    <map-marker ng-repeat="marker in markers"
+                                anchor-point="marker.anchorPoint"
+                                cross-on-drag="marker.crossOnDrag"
+                                draggable="marker.draggable"
+                                cursor="marker.cursor"
+                                position="marker.position"
+                                shadow="marker.shadow"
+                                shape="marker.shape"
+                                title="marker.title"
+                                icon="marker.icon"
+                                opacity="marker.opacity"
+                                z-index="marker.zIndex"
+                                visible="marker.visible">
                     </map-marker>
                 </ng-viet-map>
             </div>
