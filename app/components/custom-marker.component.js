@@ -4,7 +4,7 @@
 /**
  * Created by Akai on 6/19/2017.
  */
-angular.module('custom-marker', ['ngRoute'])
+angular.module('custom-marker', ['ngRoute', 'showcaseModule'])
     .config(['$locationProvider', '$routeProvider',
         function ($locationProvider, $routeProvider) {
 
@@ -19,89 +19,67 @@ angular.module('custom-marker', ['ngRoute'])
                     templateUrl: 'components/custom-marker.component.html'
                 });
         }])
-    .controller('CustomMarkerComponent', ['$scope', function ($scope) {
+    .controller('CustomMarkerComponent', [
+        '$scope', 'showcaseService',
+        function ($scope, showcaseService) {
 
-        /*
-         * Option of map.
-         * */
-        $scope.options = {
-            backgroundColor: 'red',
-            center: new vietbando.LatLng(17.01476753, 106.76513672),
-            layer: null,
-            disableDoubleClickZoom: true,
-            scrollWheel: true,
-            limitBounds: null,
-            mapTypeId: 'SATELLITE',
-            minZoom: null,
-            maxZoom: null,
-            zoom: 1,
-            isMoveInsert: false,
-            extendTile: 0,
-            zoomControl: false,
-            scaleControl: false
-        };
+            //#region Properties
 
-        /*
-         * Settings of marker.
-         * */
-        $scope.markerSettings = [
-            {
-                anchorPoint: null,
-                crossOnDrag: true,
-                draggable: false,
-                cursor: 'default',
-                position: new vietbando.LatLng(21.39170473, 105.85327148),
-                shadow: null,
-                shape: null,
-                title: 'Area 01',
-                opacity: 0.5,
-                icon: null,
-                zIndex: 999,
-                visible: true,
-                content: '<span class="glyphicon glyphicon-calendar"></span>'
-            },
-            {
-                anchorPoint: null,
-                crossOnDrag: true,
+            // Information of showcase.
+            $scope.information = null;
+
+            // Options of map.
+            $scope.options = {
+                backgroundColor: 'red',
+                center: new vietbando.LatLng(10.8152328, 106.680505),
+                layer: null,
+                disableDoubleClickZoom: true,
+                scrollWheel: true,
+                limitBounds: null,
+                mapTypeId: 'SATELLITE',
+                minZoom: null,
+                maxZoom: null,
+                zoom: 10,
+                isMoveInsert: false,
+                extendTile: 0,
+                zoomControl: false,
+                scaleControl: false
+            };
+
+            // Special marker settings.
+            $scope.specialMarker = {
+                crossOnDrag: false,
                 draggable: true,
-                cursor: 'default',
-                position: new vietbando.LatLng(17.76961225, 106.02905273),
-                shadow: null,
-                shape: null,
-                title: 'Area 02',
-                opacity: 1,
-                icon: null,
-                zIndex: 999,
-                visible: true,
-                content: '<div style="background-color: white; vertical-align: middle; text-align: center"><span class="glyphicon glyphicon-alert"></span></div>'
-            },
-            {
-                anchorPoint: null,
-                crossOnDrag: true,
-                draggable: true,
-                cursor: 'default',
-                position: new vietbando.LatLng(20.76961225, 106.02905273),
-                shadow: null,
-                shape: null,
-                title: 'Area 03',
-                opacity: 1,
-                zIndex: 999,
-                visible: true,
-                content: '<div style="background-color: transparent; vertical-align: middle; text-align: center"><span class="glyphicon glyphicon-apple"></span></div>'
-            }];
+                position: new vietbando.LatLng(10.8152328, 106.680505),
+                content: '<div style="position: absolute; left: 0px; top: 0px; width: 45px; height: 45px; border: 1px solid rgb(0, 0, 0); border-top-left-radius: 30px; border-top-right-radius: 30px; border-bottom-right-radius: 30px; border-bottom-left-radius: 30px; opacity: 1; background-color: white;"><p style="text-align:center;">1</p></div>',
+                icon: new vietbando.Icon({
+                    size: new vietbando.Size(46, 46),
+                    anchor: new vietbando.Point(23, 23)
+                })
+            };
 
-        $scope.specialMarker = {
-            anchorPoint: null,
-            crossOnDrag: true,
-            draggable: false,
-            cursor: 'no-drop',
-            position: new vietbando.LatLng(20.41671699, 104.92630005),
-            shadow: null,
-            shape: null,
-            title: 'Special marker',
-            opacity: 0.5,
-            icon: null,
-            zIndex: 999,
-            visible: true
-        }
-    }]);
+            //#endregion
+
+            //#region Methods
+
+            /*
+             * Called when component has been initiated successfully.
+             * */
+            $scope.init = function () {
+                // Load showcase information.
+                $scope.loadInfo();
+            };
+
+            /*
+             * Load showcase information.
+             * */
+            $scope.loadInfo = function () {
+                showcaseService.getCustomMarkerInfo()
+                    .then(function (x) {
+                        // Update information.
+                        $scope.information = x.data;
+                    });
+            }
+
+            //#endregion
+        }]);

@@ -1,0 +1,102 @@
+{
+  "properties":[
+    {
+      "name": "anchor-point",
+      "type": "Point",
+      "description": "Used for adjusting InfoWindow which is opened onto marker."
+    },
+    {
+      "name": "cross-on-drag",
+      "type": "boolean",
+      "description": "Whether cross appears when marker is being dragged."
+    },
+    {
+      "name": "draggable",
+      "type": "boolean",
+      "description": "Whether marker can be dragged or not."
+    },
+    {
+      "name": "cursor",
+      "type": "string",
+      "description": "Cursor when mouse moves over marker."
+    },
+    {
+      "name": "shadow",
+      "type": "Icon",
+      "description": "Marker shadow icon."
+    },
+    {
+      "name": "shape",
+      "type": "MarkerShape",
+      "description": "Shape of marker. Identify area where marker receives events."
+    },
+    {
+      "name": "title",
+      "type": "string",
+      "description": "Title of marker."
+    },
+    {
+      "name": "opacity",
+      "type": "float",
+      "description": "Opacity of marker. From 0.0 - 1.0"
+    },
+    {
+      "name": "icon",
+      "type": "Icon",
+      "description": "Represent marker display."
+    },
+    {
+      "name": "z-index",
+      "type": "integer",
+      "description": "z-index of marker."
+    },
+    {
+      "name": "visible",
+      "type": "boolean",
+      "description": "Whether marker is visible or not."
+    }
+
+  ],
+  "events":[
+    {
+      "name": "click",
+      "description": "Raised when user clicks on marker."
+    },
+    {
+      "name": "double-click",
+      "description": "Raised when user double clicks on marker."
+    },
+    {
+      "name": "right-click",
+      "description": "Raised when user right clicks on marker."
+    },
+    {
+      "name": "drag-start",
+      "description": "Raised when user starts dragging marker."
+    },
+    {
+      "name": "drag",
+      "description": "Raised when user is dragging marker."
+    },
+    {
+      "name": "drag-end",
+      "description": "Raised when user finishes dragging marker."
+    },
+    {
+      "name": "mouse-over",
+      "description": "Raised when mouse moves over map."
+    },
+    {
+      "name": "mouse-out",
+      "description": "Raised when mouse moves from map to its outside."
+    },
+    {
+      "name": "mouse-down",
+      "description": "Raised when mouse is held down on marker."
+    },
+    {
+      "name": "mouse-up",
+      "description": "Raised when mouse is released from marker."
+    }
+  ]
+}

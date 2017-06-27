@@ -27,5 +27,12 @@ angular.module('showcaseModule')
         * */
         this.getBasicMarkerInfo = function(){
             return $http.get('/assets/data/parameter-config/basic-marker.json');
-        }
+        };
+
+        /*
+        * Get custom marker showcase information.
+        * */
+        this.getCustomMarkerInfo = function(){
+            return $http.get('/assets/data/parameter-config/custom-marker.json');
+        };
     }]);
