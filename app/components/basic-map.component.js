@@ -62,8 +62,6 @@ angular.module('basic-map', ['ngRoute', 'showcaseModule'])
             $scope.loadShowcase = function () {
                 showcaseService.getBasicMapInfo()
                     .then(function (x) {
-
-                        console.log(x);
                         // Obtain data from service.
                         var data = x.data;
 

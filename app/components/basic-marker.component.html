@@ -1,4 +1,5 @@
-<div class="row">
+<div class="row"
+     ng-init="init()">
     <!--Sidebar-->
     <div class="col-md-3">
         <p class="lead">Basic marker</p>
@@ -52,200 +53,38 @@
                                 shape="setting.shape"
                                 title="setting.title"
                                 opacity="setting.opacity"
-                                z-index="setting.zIndex">
+                                z-index="setting.zIndex"
+                                visible="setting.visible">
                     </map-marker>
                 </ng-viet-map>
             </div>
         </div>
 
         <div id="options"
-             class="panel panel-info">
-
+             class="panel panel-info"
+             ng-if="information != null && information.properties != null">
             <div class="panel-heading">
-                Options
+                Properties
             </div>
             <div class="panel-body">
                 <table class="table table-bordered ng-scope">
                     <thead>
                     <tr>
-                        <th>Properties</th>
-                        <th>Type</th>
-                        <th>Description</th>
+                        <th class="text-center">Properties</th>
+                        <th class="text-center">Type</th>
+                        <th class="text-center">Description</th>
                     </tr>
                     </thead>
                     <tbody>
-                    <tr>
+                    <tr ng-repeat="property in information.properties">
                         <td>
-                            <code>backgroundColor</code>
+                            <code>{{property.name}}</code>
                         </td>
                         <td>
-                            string
+                            {{property.type}}
                         </td>
                         <td>
-                            Color background của mapDiv
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <code>center</code>
-                        </td>
-                        <td>
-                            <!-- ngRepeat: x in ['LatLng'] --><a href="" ng-click="gotoAnchor(x)" ng-repeat="x in ['LatLng']" class="ng-scope">LatLng</a><!-- end ngRepeat: x in ['LatLng'] -->
-                        </td>
-                        <td>
-                            Center của Map lúc khởi động.
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <code>layer</code>
-                        </td>
-                        <td>
-                            <a href="" ng-click="gotoAnchor('Layer')">Layer hoặc [layer1,layer2,....]</a>
-                        </td>
-                        <td>
-                            Khởi động Map với layer. Nếu layer là null thì lấy layer mặc định.
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <code>disableDoubleClickZoom</code>
-                        </td>
-                        <td>
-                            boolean
-                        </td>
-                        <td>
-                            Cho phép double click zoom Map hay không. Mặc định là false
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <code> scrollWheel</code>
-                        </td>
-                        <td>
-                            boolean
-                        </td>
-                        <td>
-                            Cho phép scroll chuột để zoom Map hay không. Mặc định là true
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <code> limitBounds</code>
-                        </td>
-                        <td>
-                            <a href="" ng-click="gotoAnchor('LatLngBounds')"><em>LatLngBounds</em></a>
-                        </td>
-                        <td>
-                            Giới hạn khung bao của map. Mặc định là null
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <code>mapTypeId</code>
-                        </td>
-                        <td>
-                            <a href="" ng-click="gotoAnchor('MapTypeId')">MapTypeId</a>
-                        </td>
-                        <td>
-                            Khởi động Map mapTypeId. Mặc định là ROADMAP.
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <code> minZoom</code>
-                        </td>
-                        <td>
-                            number
-                        </td>
-                        <td>
-                            Mức zoom level nhỏ nhất của Map
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <code>maxZoom</code>
-                        </td>
-                        <td>
-                            number
-                        </td>
-                        <td>
-                            Mức zoom level lớn nhất của Map
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <code>zoom</code>
-                        </td>
-                        <td>
-                            number
-                        </td>
-                        <td>
-                            Mức zoom của Map lúc khởi động.
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <code>isMoveInsert</code>
-                        </td>
-                        <td>
-                            boolean
-                        </td>
-                        <td>
-                            Nếu true thì khi drag Map sẽ tự động vẽ lại, Ngược lại dragend mới vẽ lại. Mặc định là true
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <code> extendTile</code>
-                        </td>
-                        <td>
-                            number
-                        </td>
-                        <td>
-                            Mở rộng Map. Mặc định là 0.
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <code>zoomControl</code>
-                        </td>
-                        <td>
-                            boolean
-                        </td>
-                        <td>
-                            Khởi động Map có control zoom, và zoom fit. Mặc định là true
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <code>zoomControlOptions</code>
-                        </td>
-                        <td>
-                            Object
-                        </td>
-                        <td>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <code>scaleControl</code>
-                        </td>
-                        <td>
-                            boolean
-                        </td>
-                        <td>
-                            Khởi động Map có scale Control. Mặc định là true
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <code>scaleControlOptions</code>
-                        </td>
-                        <td>
-                            Object
-                        </td>
-                        <td>
+                            {{property.description}}
                         </td>
                     </tr>
                     </tbody>
@@ -254,13 +93,13 @@
         </div>
 
         <div id="events"
-             class="panel panel-warning">
-
+             class="panel panel-warning"
+             ng-if="information != null && information.properties != null">
             <div class="panel-heading">
                 Events
             </div>
             <div class="panel-body">
-                <table class="table table-responsive table-condensed">
+                <table class="table table-bordered">
                     <thead>
                     <tr>
                         <th class="text-center">Events</th>
@@ -268,8 +107,12 @@
                     </tr>
                     </thead>
                     <tbody>
-                    <tr></tr>
-                    <tr></tr>
+                    <tr ng-repeat="event in information.events">
+                        <td>
+                            <code>{{event.name}}</code>
+                        </td>
+                        <td>{{event.description}}</td>
+                    </tr>
                     </tbody>
                 </table>
             </div>

@@ -21,4 +21,11 @@ angular.module('showcaseModule')
         this.getBasicMapInfo = function(){
             return $http.get('/assets/data/parameter-config/basic-map.json');
         };
+
+        /*
+        * Get basic marker showcase information.
+        * */
+        this.getBasicMarkerInfo = function(){
+            return $http.get('/assets/data/parameter-config/basic-marker.json');
+        }
     }]);
