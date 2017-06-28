@@ -1,0 +1,78 @@
+{
+  "properties":[
+    {
+      "name": "bounds",
+      "type": "LatLngBounds",
+      "description": "Area defined bound of rectangle."
+    },
+    {
+      "name": "fill-color",
+      "type": "string",
+      "description": "Color which is filled into rectangle."
+    },
+    {
+      "name": "fill-opacity",
+      "type": "float",
+      "description": "Opacity of filled area. (0.0 - 1.0)"
+    },
+    {
+      "name": "stroke-color",
+      "type": "string",
+      "description": "Color of rectangle edges."
+    },
+    {
+      "name": "stroke-width",
+      "type": "integer",
+      "description": "Width of rectangle edges."
+    },
+    {
+      "name": "stroke-opacity",
+      "type": "float",
+      "description": "Opacity of edges (0.0 - 1.0)"
+    },
+    {
+      "name": "visible",
+      "type": "boolean",
+      "description": "Whether rectangle is visible or not."
+    },
+    {
+      "name": "z-index",
+      "type": "integer",
+      "description": "Z position of rectangle on map."
+    }
+  ],
+  "events":[
+    {
+      "name": "click",
+      "description": "Raised when rectangle is clicked on."
+    },
+    {
+      "name": "double-click",
+      "description": "Raised when rectangle is doubly clicked."
+    },
+    {
+      "name": "right-click",
+      "description": "Raised when rectangle is right clicked."
+    },
+    {
+      "name": "mouse-over",
+      "description": "Raised when mouse moves over rectangle."
+    },
+    {
+      "name": "mouse-out",
+      "description": "Raised when mouse moves out of rectangle."
+    },
+    {
+      "name": "mouse-move",
+      "description": "Raised when mouse moves on rectangle."
+    },
+    {
+      "name": "mouse-up",
+      "description": "Raised when mouse is released from rectangle"
+    },
+    {
+      "name": "bounds-changed",
+      "description": "Raised when bounds are changed."
+    }
+  ]
+}

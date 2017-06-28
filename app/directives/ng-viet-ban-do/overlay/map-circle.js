@@ -9,12 +9,12 @@ angular.module('ng-viet-ban-do')
                 center: '=?',
                 fillColor: '=?',
                 fillOpacity: '=?',
+                strokeColor: '=?',
                 strokeOpacity: '=?',
                 strokeWidth: '=?',
                 visible: '=?',
                 zIndex: '=?',
                 radius: '=?',
-                radius2: '=?',
 
                 // Event listeners
                 click: '&',
@@ -38,9 +38,9 @@ angular.module('ng-viet-ban-do')
                     {name: 'center', function: 'setCenter', default: null},
                     {name: 'fillColor', function: 'setFillColor', default: 'black'},
                     {name: 'fillOpacity', function: 'setFillOpacity', default: 0.5},
+                    {name: 'strokeColor', function: 'setStrokeColor', default: true},
                     {name: 'strokeOpacity', function: 'setStrokeOpacity', default: 0.5},
                     {name: 'strokeWidth', function: 'setStrokeWidth', default: 1},
-                    {name: 'strokeColor', function: 'setStrokeColor', default: true},
                     {name: 'visible', function: 'setVisible', default: true},
                     {name: 'zIndex', function: 'setZIndex', default: 1},
                     {name: 'radius', function: 'setRadius', default: 500}

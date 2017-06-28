@@ -1,0 +1,83 @@
+{
+  "properties":[
+    {
+      "name": "center",
+      "type": "",
+      "description": ""
+    },
+    {
+      "name": "fill-color",
+      "type": "string",
+      "description": "Color which will be filled into circle."
+    },
+    {
+      "name": "fill-opacity",
+      "type": "float",
+      "description": "Opacity of color which is filled into circle."
+    },
+    {
+      "name": "stroke-color",
+      "type": "string",
+      "description": "Color which is filled into stroke"
+    },
+    {
+      "name": "stroke-opacity",
+      "type": "float",
+      "description": "Opacity of stroke. (0.0 - 1.0)"
+    },
+    {
+      "name": "stroke-width",
+      "type": "integer",
+      "description": "Width of stroke."
+    },
+    {
+      "name": "visible",
+      "type": "boolean",
+      "description": "Whether circle is visible or not."
+    },
+    {
+      "name": "z-index",
+      "type": "integer",
+      "description": "Z index of circle on map."
+    },
+    {
+      "name": "radius",
+      "type": "float",
+      "description": "Radius of circle."
+    }
+  ],
+  "events":[
+    {
+      "name": "click",
+      "description": "Raised when circle is clicked."
+    },
+    {
+      "name": "double-click",
+      "description": "Raised when circle is doubly clicked."
+    },
+    {
+      "name": "right-click",
+      "description": "Raised when circle is right clicked."
+    },
+    {
+      "name": "mouse-over",
+      "description": "Raised when mouse moves over the circle (without being pressed down)"
+    },
+    {
+      "name": "mouse-out",
+      "description": "Raised when mouse moves out of circle"
+    },
+    {
+      "name": "mouse-down",
+      "description": "Raised when mouse is pressed down on circle."
+    },
+    {
+      "name": "mouse-up",
+      "description": "Raised when mouse is released from circle."
+    },
+    {
+      "name": "bounds-changed",
+      "description": "Raised when circle bounds are changed."
+    }
+  ]
+}
