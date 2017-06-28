@@ -2,43 +2,43 @@
   "properties":[
     {
       "name": "paths",
-      "type": "",
-      "description": ""
+      "type": "LatLng[]",
+      "description": "Paths of polygon"
     },
     {
       "name": "fill-color",
-      "type": "",
-      "description": ""
+      "type": "string",
+      "description": "Color which is filled into polygon."
     },
     {
       "name": "fill-opacity",
-      "type": "",
-      "description": ""
+      "type": "float",
+      "description": "Opacity of polygon (0.0 - 1.0)"
     },
     {
       "name": "z-index",
-      "type": "",
-      "description": ""
+      "type": "integer",
+      "description": "z index polygon on map."
     },
     {
       "name": "visible",
-      "type": "",
-      "description": ""
+      "type": "boolean",
+      "description": "Whether polygon is visible or not."
     },
     {
       "name": "stroke-color",
-      "type": "",
-      "description": ""
+      "type": "string",
+      "description": "Color of polygon edge (0.0 - 1.0)"
     },
     {
       "name": "stroke-opacity",
-      "type": "",
-      "description": ""
+      "type": "float",
+      "description": "Opacity of polygon edges (0.0 - 1.0)"
     },
     {
       "name": "stroke-width",
-      "type": "",
-      "description": ""
+      "type": "integer",
+      "description": "Width of polygon edges."
     }
   ],
   "events": [

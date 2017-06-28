@@ -61,7 +61,7 @@
                 Properties
             </div>
             <div class="panel-body">
-                <table class="table table-bordered table-responsive">
+                <table class="table table-bordered table-bordered table-responsive">
                     <thead>
                     <tr>
                         <th class="text-center">Properties</th>
@@ -87,13 +87,14 @@
         </div>
 
         <div id="events"
-             class="panel panel-warning">
+             class="panel panel-warning"
+             ng-if="information && information.events">
 
             <div class="panel-heading">
                 Events
             </div>
             <div class="panel-body">
-                <table class="table table-responsive table-condensed">
+                <table class="table table-bordered table-responsive">
                     <thead>
                     <tr>
                         <th class="text-center">Events</th>
@@ -101,7 +102,14 @@
                     </tr>
                     </thead>
                     <tbody>
-                    <tr></tr>
+                    <tr ng-repeat="event in information.events">
+                        <td>
+                            <code>{{event.name}}</code>
+                        </td>
+                        <td>
+                            {{event.description}}
+                        </td>
+                    </tr>
                     <tr></tr>
                     </tbody>
                 </table>
