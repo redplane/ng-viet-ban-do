@@ -17,8 +17,8 @@ angular.module('basic-map', ['ngRoute', 'showcaseModule'])
                 });
         }])
     .controller('BasicMapController', [
-        '$scope', 'showcaseService',
-        function ($scope, showcaseService) {
+        '$scope', 'showcaseService', 'anchorService',
+        function ($scope, showcaseService, anchorService) {
 
             //#region Properties
 
@@ -68,6 +68,13 @@ angular.module('basic-map', ['ngRoute', 'showcaseModule'])
                         // Load information.
                         $scope.information = data;
                     });
+            };
+
+            /*
+            * Go to element index.
+            * */
+            $scope.gotoElement = function(elementId){
+                anchorService.gotoElement(elementId);
             }
             //#endregion
 
