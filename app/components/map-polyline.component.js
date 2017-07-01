@@ -20,8 +20,8 @@ angular.module('map-polyline', ['ngRoute', 'showcaseModule'])
                 });
         }])
     .controller('MapPolylineComponentController', [
-        '$scope', 'showcaseService',
-        function ($scope, showcaseService) {
+        '$scope', 'showcaseService', 'anchorService',
+        function ($scope, showcaseService, anchorService) {
 
             //#region Properties
 
@@ -78,5 +78,11 @@ angular.module('map-polyline', ['ngRoute', 'showcaseModule'])
                     });
             };
 
+            /*
+            * Go to specific element on page.
+            * */
+            $scope.gotoElement = function(elementId){
+                anchorService.gotoElement(elementId);
+            }
             //#endregion
         }]);

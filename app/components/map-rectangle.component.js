@@ -17,8 +17,8 @@ angular.module('map-rectangle', ['ngRoute', 'showcaseModule'])
                 });
         }])
     .controller('MapRectangleComponent', [
-        '$scope', 'showcaseService',
-        function ($scope, showcaseService) {
+        '$scope', 'showcaseService', 'anchorService',
+        function ($scope, showcaseService, anchorService) {
 
             //#region Properties
 
@@ -63,6 +63,14 @@ angular.module('map-rectangle', ['ngRoute', 'showcaseModule'])
                     .then(function (x) {
                         $scope.information = x.data;
                     });
-            }
+            };
+
+            /*
+            * Go to specific element.
+            * */
+            $scope.gotoElement = function(elementId){
+                anchorService.gotoElement(elementId);
+            };
+
             //#endregion
         }]);

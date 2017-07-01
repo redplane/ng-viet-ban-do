@@ -18,7 +18,7 @@ angular.module('basic-marker', ['ngRoute', 'showcaseModule'])
         }])
     .controller('BasicMarkerComponent', [
         '$scope', 'showcaseService',
-        function ($scope, showcaseService) {
+        function ($scope, showcaseService, anchorService) {
 
             //#region Properties
 
@@ -93,6 +93,13 @@ angular.module('basic-marker', ['ngRoute', 'showcaseModule'])
                         var data = x.data;
                         $scope.information = data;
                     });
+            };
+
+            /*
+            * Goto element.
+            * */
+            $scope.gotoElement = function(elementId){
+                anchorService.gotoElement(elementId);
             }
             //#endregion
         }]);

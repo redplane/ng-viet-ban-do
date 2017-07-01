@@ -4,16 +4,20 @@
     <div class="col-md-3">
         <p class="lead">Info window</p>
         <div class="list-group">
-            <a href="#mapDemo"
+            <a ng-click="gotoElement('demo')"
+               href="javascript:void(0);"
                class="list-group-item">Demo</a>
 
-            <a href="javascript:void(0);"
+            <a ng-click="gotoElement('properties')"
+               href="javascript:void(0);"
                class="list-group-item">Properties</a>
 
-            <a href="javascript:void(0);"
+            <a ng-click="gotoElement('events')"
+               href="javascript:void(0);"
                class="list-group-item">Events</a>
 
-            <a href="javascript:void(0);"
+            <a ng-click="gotoElement('code')"
+               href="javascript:void(0);"
                class="list-group-item">Code</a>
         </div>
     </div>
@@ -21,7 +25,7 @@
     <!--Main content-->
     <div class="col-md-9">
 
-        <div id="mapDemo"
+        <div id="demo"
              class="panel panel-primary">
 
             <div class="panel-heading">
@@ -38,7 +42,7 @@
             </div>
         </div>
 
-        <div id="options"
+        <div id="properties"
              class="panel panel-info"
              ng-if="information != null && information.properties != null">
             <div class="panel-heading">
@@ -96,7 +100,7 @@
             </div>
         </div>
 
-        <div id="mapCode"
+        <div id="code"
              class="panel panel-default">
             <div class="panel-heading">
                 Code

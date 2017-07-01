@@ -20,8 +20,8 @@ angular.module('custom-marker', ['ngRoute', 'showcaseModule'])
                 });
         }])
     .controller('CustomMarkerComponent', [
-        '$scope', 'showcaseService',
-        function ($scope, showcaseService) {
+        '$scope', 'showcaseService', 'anchorService',
+        function ($scope, showcaseService, anchorService) {
 
             //#region Properties
 
@@ -79,6 +79,13 @@ angular.module('custom-marker', ['ngRoute', 'showcaseModule'])
                         // Update information.
                         $scope.information = x.data;
                     });
+            };
+
+            /*
+            * Go to specific element on page.
+            * */
+            $scope.gotoElement = function(elementId){
+                anchorService.gotoElement(elementId);
             }
 
             //#endregion
