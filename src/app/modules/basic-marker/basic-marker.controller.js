@@ -1,5 +1,5 @@
 module.exports = function (ngModule) {
-    ngModule.controller('BasicMarkerComponent',
+    ngModule.controller('basicMarkerTutorialController',
         function ($scope, showcaseService, anchorService) {
 
             //#region Properties

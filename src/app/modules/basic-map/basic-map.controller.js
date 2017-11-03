@@ -2,7 +2,7 @@
  * Created by Akai on 6/19/2017.
  */
 module.exports = function (ngModule) {
-    ngModule.controller('BasicMapController',
+    ngModule.controller('basicMapTutorialController',
         function ($scope, showcaseService, anchorService) {
 
             //#region Properties

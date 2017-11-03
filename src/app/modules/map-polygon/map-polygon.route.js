@@ -1,16 +1,17 @@
 module.exports = function (ngModule) {
-    ngModule.config(['$locationProvider', '$routeProvider',
-        function ($locationProvider, $routeProvider) {
 
-            // Url hash configuration
-            $locationProvider
-                .hashPrefix('!');
+    // Import component template.
+    var ngComponentTemplate = require('./map-polygon.html');
 
+    // Module configuration.
+    ngModule.config(
+        function ($stateProvider, appStates) {
             // Fallback url.
-            $routeProvider
-                .when('/map-polygon', {
-                    controller: 'MapPolygonComponentController',
-                    templateUrl: 'modules/map-polygon.component.html'
+            $stateProvider
+                .state(appStates.mapPolygon.name, {
+                    url: appStates.mapPolygon.url,
+                    controller: 'mapPolygonTutorialController',
+                    template: ngComponentTemplate
                 });
-        }]);
+        });
 };

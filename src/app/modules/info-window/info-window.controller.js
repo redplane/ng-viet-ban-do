@@ -1,5 +1,5 @@
 module.exports = function(ngModule){
-  ngModule.controller('InfoWindowComponentController',
+  ngModule.controller('infoWindowTutorialController',
       function ($scope, showcaseService, anchorService) {
 
           //#region Properties

@@ -5,7 +5,8 @@ module.exports = function (ngModule) {
     ngModule.config(
         function ($stateProvider, appStates) {
             $stateProvider.state(appStates.basicMap.name, {
-                controller: 'basicMapController',
+                url: appStates.basicMap.url,
+                controller: 'basicMapTutorialController',
                 template: ngComponentTemplate
             });
     })

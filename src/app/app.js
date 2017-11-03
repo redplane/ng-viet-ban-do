@@ -7,6 +7,8 @@ require('./assets/css/timeline.css');
 
 // Import libraries.
 var angular = require('angular');
+require('@uirouter/angularjs');
+require('angular-route');
 
 // Plugins import.
 require('./directives/ng-viet-ban-do/index.d');
@@ -17,6 +19,9 @@ var ngModule = angular.module('ng-viet-ban-do-tutorial', [
     'ui.router',
     'ng-viet-ban-do'
 ]);
+
+// Constants import.
+require('./constants/index.d')(ngModule);
 
 // Services import.
 require('./services/index.d')(ngModule);

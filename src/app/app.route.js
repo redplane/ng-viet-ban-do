@@ -1,12 +1,14 @@
 module.exports = function (ngModule) {
     ngModule.config(
-        function ($locationProvider, $routeProvider) {
+        function ($locationProvider, $stateProvider, appStates) {
+            // Url hash configuration
+            $locationProvider
+                .hashPrefix('!');
 
-        // Url hash configuration
-        $locationProvider
-            .hashPrefix('!');
-
-        // Fallback url.
-        $routeProvider.otherwise({redirectTo: '/'});
-    });
+            // Fallback url.
+            $stateProvider.state('default',{
+                url: '/',
+                redirectTo: appStates.main.name
+            })
+        });
 };

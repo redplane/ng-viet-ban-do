@@ -2,7 +2,7 @@
  * Created by Linh Nguyen on 6/19/2017.
  */
 module.exports = function (ngModule) {
-    ngModule.controller('MapPolylineComponentController',
+    ngModule.controller('mapPolyLineTutorialController',
         function ($scope, showcaseService, anchorService) {
 
             //#region Properties

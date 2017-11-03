@@ -1,16 +1,17 @@
-module.exports = function(ngModule){
-    ngModule.config(['$locationProvider', '$routeProvider',
-        function ($locationProvider, $routeProvider) {
+module.exports = function (ngModule) {
 
-            // Url hash configuration
-            $locationProvider
-                .hashPrefix('!');
+    // Import component template.
+    var ngComponentTemplate = require('./map-polyline.html');
 
+    // Module configuration.
+    ngModule.config(
+        function ($stateProvider, appStates) {
             // Fallback url.
-            $routeProvider
-                .when('/map-polyline', {
-                    controller: 'MapPolylineComponentController',
-                    templateUrl: 'modules/map-polyline.component.html'
+            $stateProvider
+                .state(appStates.mapPolyline.name, {
+                    url: appStates.mapPolyline.url,
+                    controller: 'mapPolyLineTutorialController',
+                    template: ngComponentTemplate
                 });
-        }])
+        })
 };

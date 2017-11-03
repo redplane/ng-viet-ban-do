@@ -11,7 +11,8 @@ module.exports = function (ngModule) {
         // Fallback url.
         $stateProvider
             .state(appStates.customMarker.name, {
-                controller: 'customMarkerController',
+                url: appStates.customMarker.url,
+                controller: 'customMarkerTutorialController',
                 template: ngComponentTemplate
             });
     });

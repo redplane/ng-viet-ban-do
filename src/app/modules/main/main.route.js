@@ -1,30 +1,20 @@
 /**
  * Created by Akai on 6/19/2017.
  */
-module.exports = function(ngModule){
+module.exports = function (ngModule) {
 
     // Load component template.
     var ngComponentTemplate = require('./main.html');
 
     // Module configuration.
-    ngModule.config(['$locationProvider', '$routeProvider',
-        function ($locationProvider, $routeProvider) {
-
-            // Url hash configuration
-            $locationProvider
-                .hashPrefix('!');
-
+    ngModule.config(
+        function ($stateProvider, appStates) {
             // Fallback url.
-            $routeProvider
-                .when('/', {
-                    controller: 'MainComponentController',
-                    template: ngComponentTemplate
-                })
-                .when('', {
-                    controller: 'MainComponentController',
-                    template: ngComponentTemplate
-                });
-        }])
+            $stateProvider.state(appStates.main.name, {
+                url: appStates.main.url,
+                controller: 'mainComponentTutorialController',
+                template: ngComponentTemplate
+            });
+        });
 };
-angular.module('main-component', ['ngRoute', 'showcaseModule'])
 

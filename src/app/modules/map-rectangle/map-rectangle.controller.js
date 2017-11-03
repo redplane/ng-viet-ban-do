@@ -2,7 +2,7 @@
  * Created by Akai on 6/19/2017.
  */
 module.exports = function (ngModule) {
-    ngModule.controller('MapRectangleComponent',
+    ngModule.controller('mapRectangleTutorialController',
         function ($scope, showcaseService, anchorService) {
 
             //#region Properties

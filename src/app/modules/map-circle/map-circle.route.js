@@ -1,16 +1,17 @@
 module.exports = function (ngModule) {
-    ngModule.config(['$locationProvider', '$routeProvider',
-        function ($locationProvider, $routeProvider) {
 
-            // Url hash configuration
-            $locationProvider
-                .hashPrefix('!');
+    // Import component template.
+    var ngComponentTemplate = require('./map-circle.html');
 
+    // Module configuration.
+    ngModule.config(
+        function ($stateProvider, appStates) {
             // Fallback url.
-            $routeProvider
-                .when('/map-circle', {
-                    controller: 'MapCircleComponentController',
-                    templateUrl: 'modules/map-circle.component.html'
+            $stateProvider
+                .state(appStates.mapCircle.name, {
+                    url: appStates.mapCircle.url,
+                    controller: 'mapCircleTutorialController',
+                    template: ngComponentTemplate
                 });
-        }]);
+        });
 };

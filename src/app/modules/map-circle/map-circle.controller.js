@@ -3,7 +3,7 @@
  */
 
 module.exports = function (ngModule) {
-    ngModule.controller('MapCircleComponentController',
+    ngModule.controller('mapCircleTutorialController',
         function ($scope, showcaseService, anchorService) {
 
             //#region Properties
