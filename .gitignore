@@ -7,3 +7,4 @@ tmp
 .idea
 npm-debug.log
 /src/dist
+/src/plugin-dist
