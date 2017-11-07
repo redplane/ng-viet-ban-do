@@ -1,9 +1,11 @@
 'use strict';
 
 // Import css files.
-require('bootstrap');
+require('bootstrap/dist/css/bootstrap.min.css');
 require('./assets/css/shop-homepage.css');
 require('./assets/css/timeline.css');
+
+require('bootstrap');
 
 // Import libraries.
 var angular = require('angular');
@@ -27,7 +29,10 @@ require('./constants/index.d')(ngModule);
 require('./services/index.d')(ngModule);
 
 // Modules import.
-require('./modules/index.d')(ngModule);
+require('./modules/tutorial/index.d')(ngModule);
+
+// Directives import.
+require('./directives/navigation-bar/navigation-bar.directive')(ngModule);
 
 // Import routes.
 require('./app.route')(ngModule);

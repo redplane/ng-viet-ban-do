@@ -3,17 +3,17 @@
 * */
 
 // Import css file.
-require('./map.css');
+require('./css/map.css');
 
 // Initiate directive module.
-require('./index');
+require('./js/index');
 
 // Import directives.
-require('./info-window/info-window');
-require('./map/map');
-require('./marker/marker');
-require('./marker/custom-marker');
-require('./overlay/map-polyline');
-require('./overlay/map-rectangle');
-require('./overlay/map-polygon');
-require('./overlay/map-circle');
+require('./js/info-window');
+require('./js/map');
+require('./js/marker/marker');
+require('./js/marker/custom-marker');
+require('./js/overlay/map-polyline');
+require('./js/overlay/map-rectangle');
+require('./js/overlay/map-polygon');
+require('./js/overlay/map-circle');

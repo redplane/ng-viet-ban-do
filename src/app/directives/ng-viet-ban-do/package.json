@@ -1,0 +1,25 @@
+{
+  "name": "ng-viet-ban-do",
+  "version": "1.0.0",
+  "description": "A wrapper for vietbando",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/redplane/ng-viet-ban-do.git"
+  },
+  "keywords": [
+    "ng-viet-ban-do",
+    "viet-ban-do",
+    "angularjs viet-ban-do",
+    "viet ban do"
+  ],
+  "author": "Linh Nguyen",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/redplane/ng-viet-ban-do/issues"
+  },
+  "homepage": "https://github.com/redplane/ng-viet-ban-do#readme"
+}
